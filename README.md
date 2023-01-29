@@ -1,5 +1,8 @@
 # bicycle_adventure
 
+# 実装機能リスト
+https://docs.google.com/spreadsheets/d/1e5bXDukRrXf9JM2El9FNV9zH_9YqBOPrv17F-QUMaaA/edit?usp=sharing
+
 ## サイト概要
 自転車で旅・トレーニングする方に向けた、サービスです。
 
