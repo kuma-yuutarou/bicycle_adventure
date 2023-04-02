@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :age, :gender, :introduction, :telephone_number]) #新規登録したら保存されるデータのカラム　※アイコン画像imageを
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :age, :gender, :introduction, :telephone_number, :image]) #新規登録したら保存されるデータのカラム
   end
 
 end

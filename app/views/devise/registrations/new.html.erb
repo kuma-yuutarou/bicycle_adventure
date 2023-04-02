@@ -25,7 +25,7 @@
 
   <div class="field">
     <%= f.label :アイコン画像 %><br>
-    <%#= f.number_field :age %> <%#画像のactivestorage%>
+    <%= f.file_field :image, accept: "image/*" %><%#accept: "image/*"で画像ファイルしか投稿できないようにしている%>
   </div>
 
 
