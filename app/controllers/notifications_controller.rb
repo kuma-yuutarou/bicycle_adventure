@@ -1,5 +1,6 @@
 class NotificationsController < ApplicationController
-  def index
+  def index #いいね通知画面
+    
   end
 
   def create
