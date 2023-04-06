@@ -6,10 +6,11 @@ class PostsController < ApplicationController
   end
 
   def new
-    @posts = Post.new
+    @post = Post.new
   end
 
   def create
+    @post = Post.new(post_params)
   end
 
   def edit
@@ -19,5 +20,11 @@ class PostsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def post_params
+    params.require(:title, :image, :explanation, :prefectures)
   end
 end

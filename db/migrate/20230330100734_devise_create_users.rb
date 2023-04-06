@@ -37,6 +37,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.string :gender
       t.text :introduction
       t.string :telephone_number
+      t.boolean :is_active
 
 
       t.timestamps null: false

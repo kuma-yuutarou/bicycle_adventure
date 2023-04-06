@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
   def withdrawal
     @users = current_user
-    if @user.update(user_params)
+    if @users.update(is_active: false)
       reset_session
       redirect_to homes_top_path
     else
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :age, :gender, :introduction, :image, :email, :telephone_number)
+    params.require(:user).permit(:name, :age, :gender, :introduction, :image, :email, :telephone_number, :encrypted_password, :is_active)
   end
 
 end

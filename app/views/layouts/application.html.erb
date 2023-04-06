@@ -2,17 +2,23 @@
 <html>
   <head>
     <title>BicycleAdventure</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %><%#=Bootstrap app/javascript 配下のファイルを参照 %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header>
     <% if user_signed_in? %> <%#ログインしているときの場合%>
+
+      <li>
+        <i class="fa-solid fa-person-biking-mountain fa-2xl" style="color: #ff7300;"><%= link_to "Bicycle Adventure", homes_top_path %></i>
+      </li>
+
+
       <li>
         <%= link_to "新規投稿", new_post_path %>
       </li>
@@ -23,9 +29,14 @@
         <%= link_to "投稿一覧", posts_path %>
       </li>
       <li>
-        <%= link_to "マイページ", user_path %>
+        <%= link_to "マイページ", user_path(current_user.id) %>
       </li>
     <% else %>
+      <li>
+        <i class="fa-solid fa-person-biking-mountain fa-2xl" style="color: #ff7300;"><%= link_to "Bicycle Adventure", homes_top_path %></i>
+      </li>
+
+
       <li>
         <%= link_to "新規登録", new_user_registration_path %>
       </li>

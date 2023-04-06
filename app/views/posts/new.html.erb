@@ -1,6 +1,6 @@
 <h1>新規投稿</h1>
 
-<%= form_with model: @posts, url: post_path(post.id) do |f| %>
+<%= form_with model: @post, url: posts_path do |f| %>
   <%= f.label "タイトル名" %>
   <%= f.text_field :title %>
 
