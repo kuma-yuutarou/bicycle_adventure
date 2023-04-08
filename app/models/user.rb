@@ -8,7 +8,7 @@ class User < ApplicationRecord
       user.password = SecureRandom.urlsafe_base64
       user.password_confirmation = user.password
       user.name = "ゲストユーザーでーす"
-      user.age = "22"
+      user.age = "22歳"
       user.gender = "男性でーす"
       user.introduction ="自己紹介ですよ"
       user.telephone_number ="０９０１２３４５６７８"

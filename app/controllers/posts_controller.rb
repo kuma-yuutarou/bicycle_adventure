@@ -11,6 +11,8 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.save
+    redirect_to post_path(post.id)
   end
 
   def edit
@@ -25,6 +27,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:title, :image, :explanation, :prefectures)
+    params.require(:title, :image, :explanation, :prefecture_id)
   end
 end

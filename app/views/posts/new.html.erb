@@ -11,7 +11,7 @@
   <%= f.text_area :explanation, rows: "10" %>
 
   <%= f.label "地名タグを選択" %>
-
+  <%= f.select :prefecture_id, Post.prefecture_ids.keys, {prompt: '選択してください'} %> <%#配列を入れる※複数形で記述 　今回はモデルでenumを定義しているカラム名を入れる　%>
 
   <%= f.submit '投稿' %>
 <% end %>
