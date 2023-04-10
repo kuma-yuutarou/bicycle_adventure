@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @post = Post.find(params[:id])
   end
 
   def new
@@ -11,8 +12,9 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.save
-    redirect_to post_path(post.id)
+    @post.user_id = current_user.id
+    @post.save! #！マークをつけるとセーブされているかの確認
+    redirect_to post_path(@post.id)
   end
 
   def edit
@@ -22,11 +24,14 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to user_path(current_user.id)
   end
 
   private
 
   def post_params
-    params.require(:title, :image, :explanation, :prefecture_id)
+    params.require(:post).permit(:title, :image, :explanation, :prefecture_id, :user_id)
   end
 end

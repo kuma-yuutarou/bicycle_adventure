@@ -47,7 +47,9 @@ Rails.application.routes.draw do
   # get 'users/edit'
   # get 'users/update'
 
-  resources :posts #7つ含まれている　[index,show,new,create,edit,update,destroy]
+  resources :posts do  #7つ含まれている　[index,show,new,create,edit,update,destroy]
+    resource :likes, only: [:create, :destroy]
+  end
   # get 'posts/index'
   # get 'posts/show'
   # get 'posts/new'

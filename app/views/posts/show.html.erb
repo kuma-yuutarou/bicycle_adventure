@@ -1,2 +1,35 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<h1>投稿詳細</h1>
+
+<%#= 投稿ユーザー情報%><%#= 画像・名前・年齢・性別%>
+<%= link_to user_path(@post.id) do %>
+    <%= image_tag @post.user.image, size: "200x200" %>
+    <%= @post.user.name %>
+<% end %>
+<%= @post.user.age %>
+<%= @post.user.gender %>
+
+<%= @post.title %> <%#= タイトル名%>
+<%= image_tag @post.image, size: "200x200" %> <%#= 写真表示%>
+<%= @post.explanation %> <%#= 説明%>
+<%= @post.prefecture_id %> <%#= 地名タグ%>
+<%= link_to "投稿削除", post_path(@post), method: :delete %>
+
+
+<% if @post.liked_by?(current_user) %> <%#= いいねボタン%><%#= いいね数%>
+    <p>
+      <%= link_to post_likes_path(@post), method: :delete do %>
+        ♥<%= @post.likes.count %> いいね
+      <% end %>
+    </p>
+
+    <% else %>
+
+    <p>
+      <%= link_to post_likes_path(@post), method: :post do %>
+        ♡<%= @post.likes.count %> いいね
+      <% end %>
+    </p>
+  <% end %>
+
+
+<%#= コメント機能%>

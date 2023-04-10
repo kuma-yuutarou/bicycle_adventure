@@ -1,5 +1,14 @@
 class Post < ApplicationRecord
 
+  has_one_attached :image#画像を保存させる機能
+
+  belongs_to :user
+  has_many :likes
+  
+  def liked_by?(user) #いいね機能色判定
+    likes.exists?(user_id: user.id)
+  end
+
   enum prefecture_id: { #新規投稿の都道府県のタグ選択
     北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
     茨城県:8,栃木県:9,群馬県:10,埼玉県:11,千葉県:12,東京都:13,神奈川県:14,

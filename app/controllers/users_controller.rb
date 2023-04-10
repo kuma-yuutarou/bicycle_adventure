@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = current_user #ログインしているユーザー
+    @posts = Post.all
   end
 
   def edit

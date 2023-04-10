@@ -3,6 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_one_attached :image
 
+  has_many :posts
+  has_many :likes, dependent: :destroy #いいね
+
   def self.guest #ゲストログインの情報
     user=find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
