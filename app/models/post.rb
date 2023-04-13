@@ -3,8 +3,9 @@ class Post < ApplicationRecord
   has_one_attached :image#画像を保存させる機能
 
   belongs_to :user
+  has_many :comments, dependent: :destroy #dependent: :destroyこの場合　投稿が削除されると今までのコメントが自動的に削除される
   has_many :likes
-  
+
   def liked_by?(user) #いいね機能色判定
     likes.exists?(user_id: user.id)
   end

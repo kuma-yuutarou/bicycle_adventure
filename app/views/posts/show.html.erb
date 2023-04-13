@@ -1,28 +1,34 @@
-<h1>投稿詳細</h1>
+<div class="row justify-content-md-center">
+  <h1>投稿詳細</h1>
+</div>
 
-<%#= 投稿ユーザー情報%><%#= 画像・名前・年齢・性別%>
-<%= link_to user_path(@post.id) do %>
+<div class="container">
+
+  <%#= 投稿ユーザー情報%><%#= 画像・名前・年齢・性別%>
+  <%= link_to user_path(@post.id) do %>
     <%= image_tag @post.user.image, size: "200x200" %>
     <%= @post.user.name %>
-<% end %>
-<%= @post.user.age %>
-<%= @post.user.gender %>
+  <% end %>
+  <%= @post.user.age %>
+  <%= @post.user.gender %>
 
-<%= @post.title %> <%#= タイトル名%>
-<%= image_tag @post.image, size: "200x200" %> <%#= 写真表示%>
-<%= @post.explanation %> <%#= 説明%>
-<%= @post.prefecture_id %> <%#= 地名タグ%>
-<%= link_to "投稿削除", post_path(@post), method: :delete %>
+  <%= @post.title %> <%#= タイトル名%>
+  <%= image_tag @post.image, size: "200x200" %> <%#= 写真表示%>
+  <%= @post.explanation %> <%#= 説明%>
+  <%= @post.prefecture_id %> <%#= 地名タグ%>
 
+  <% if current_user == @user %> <%#= 投稿したユーザーにのみ表示%>
+    <%= link_to "投稿削除", post_path(@post), method: :delete %>
+  <% end %>
 
-<% if @post.liked_by?(current_user) %> <%#= いいねボタン%><%#= いいね数%>
+  <% if @post.liked_by?(current_user) %> <%#= いいねボタン%><%#= いいね数%>
     <p>
       <%= link_to post_likes_path(@post), method: :delete do %>
-        ♥<%= @post.likes.count %> いいね
+         ♥<%= @post.likes.count %> いいね
       <% end %>
     </p>
 
-    <% else %>
+  <% else %>
 
     <p>
       <%= link_to post_likes_path(@post), method: :post do %>
@@ -31,5 +37,15 @@
     </p>
   <% end %>
 
+  <%#= コメント機能%>
+  <p>コメント件数：<%#= @post.comments.count %></p>
+  <%# @post.comments.each do |post| %>
+    <%#= post_comment.user.name %>
+    <%#= post_comment.created_at.strftime('%Y/%m/%d') %>
+  <%# end %>
 
-<%#= コメント機能%>
+  <%= form_with model: [@post, @comment] do |f| %>
+    <%= f.text_area :comments, rows: '5', placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+  <% end %>
+</div>

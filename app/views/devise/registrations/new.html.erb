@@ -1,61 +1,74 @@
-<h2>新規登録</h2>
+<div class="row justify-content-md-center">
+  <h2>新規登録</h2>
+</div>
 
-<%= form_with model: @user, url: user_registration_path do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<div class="container">
+  <%= form_with model: @user, url: user_registration_path do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :名前 %><br>
-    <%= f.text_field :name %>
-  </div>
+    <div class="row row-cols-2">
+      <div class="field">
 
-  <div class="field">
-    <%= f.label :年齢 %><br>
-    <%= f.number_field :age %>
-  </div>
+        <div class="col">
+          <%= f.label :名前 %>
+        </div>
+        <div class="col">
+          <%= f.text_field :name %>
+        </div>
 
-  <div class="field">
-    <%= f.label :性別 %><br>
-    <%= f.text_field :gender %> <%#セレクトタグ　男か女%>
-  </div>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :自己紹介 %><br>
-    <%= f.text_area :introduction, rows: "10" %> <%#= rows: "10"で１０行まで入力 %>
-  </div>
+    <div class="field">
+      <%= f.label :年齢 %><br>
+      <%= f.number_field :age %>
+    </div>
 
-  <div class="field">
-    <%= f.label :アイコン画像 %><br>
-    <%= f.file_field :image, accept: "image/*" %> <%#accept: "image/*"で画像ファイルしか投稿できないようにしている%>
-  </div>
+    <div class="field">
+      <%= f.label :性別 %><br>
+      <%= f.text_field :gender %> <%#セレクトタグ　男か女%>
+    </div>
+
+    <div class="field">
+      <%= f.label :自己紹介 %><br>
+      <%= f.text_area :introduction, rows: "10" %> <%#= rows: "10"で１０行まで入力 %>
+    </div>
+
+    <div class="field">
+      <%= f.label :アイコン画像 %><br>
+      <%= f.file_field :image, accept: "image/*" %> <%#accept: "image/*"で画像ファイルしか投稿できないようにしている%>
+    </div>
 
 
-  <div class="field">
-    <%= f.label :メールアドレス %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="field">
+      <%= f.label :メールアドレス %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :電話番号（ハイフンなし） %><br>
-    <%= f.text_field :telephone_number %> <%#モデルの方で数字だけを通せるようにする%>
-  </div>
+    <div class="field">
+      <%= f.label :電話番号（ハイフンなし） %><br>
+      <%= f.text_field :telephone_number %> <%#モデルの方で数字だけを通せるようにする%>
+    </div>
 
-  <div class="field">
-    <%= f.label :パスワード %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> 文字以上)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <div class="field">
+      <%= f.label :パスワード %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> 文字以上)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :パスワード（確認） %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="field">
+      <%= f.label :パスワード（確認） %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "新規登録" %>
-  </div>
-<% end %>
+    <div class="actions">
+      <%= f.submit "新規登録" %>
+    </div>
+  <% end %>
 
 登録済みの方は<%= link_to "こちら",  new_user_session_path %>
+</div>
+
 

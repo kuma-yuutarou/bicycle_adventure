@@ -1,9 +1,13 @@
-<h1>退会</h1>
+<div class="row justify-content-md-center">
+  <h1>退会</h1>
+</div>
 
 
-<p>
-  退会すると、
-  これまでの投稿情報が閲覧できなくなります。</br>
-  退会する場合は、「退会する」をクリックしてください。
-</p>
-<%= link_to "退会する", user_withdrawal_path, method: :patch, "data-confirm" => "本当に退会しますか？" %>
+<div class="container">
+  <p>
+    退会すると、
+    これまでの投稿情報が閲覧できなくなります。</br>
+    退会する場合は、「退会する」をクリックしてください。
+  </p>
+  <%= link_to "退会する", user_withdrawal_path, method: :patch, "data-confirm" => "本当に退会しますか？" %>
+</div>

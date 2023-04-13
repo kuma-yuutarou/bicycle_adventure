@@ -14,39 +14,68 @@
     <header>
     <% if user_signed_in? %> <%#ログインしているときの場合%>
 
-      <li>
+      <div class="row justify-content-md-center">
         <i class="fa-solid fa-person-biking-mountain fa-2xl" style="color: #ff7300;"><%= link_to "Bicycle Adventure", homes_top_path %></i>
-      </li>
+      </div>
 
+      <div class="container">
+        <div class="row row-cols-4">
 
-      <li>
-        <%= link_to "新規投稿", new_post_path %>
-      </li>
-      <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </li>
-      <li>
-        <%= link_to "投稿一覧", posts_path %>
-      </li>
-      <li>
-        <%= link_to "マイページ", user_path(current_user.id) %>
-      </li>
+          <div class="col">
+              <%= link_to "新規投稿", new_post_path %>
+          </div>
+
+          <div class="col">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+          </div>
+
+          <div class="col">
+              <%= link_to "投稿一覧", posts_path %>
+          </div>
+
+          <div class="col">
+              <%= link_to "マイページ", user_path(current_user.id) %>
+          </div>
+
+        </div>
+      </div>
+
     <% else %>
-      <li>
+
+      <div class="row justify-content-md-center">
         <i class="fa-solid fa-person-biking-mountain fa-2xl" style="color: #ff7300;"><%= link_to "Bicycle Adventure", homes_top_path %></i>
-      </li>
+      </div>
 
+      <div class="container">
+        <div class="row">
+        <div class="col-sm-9"></div>
+        <div class="col-sm-3"><%= link_to "管理者ログイン", new_admin_session_path %></div>
+        </div>
+      </div>
 
-      <li>
-        <%= link_to "新規登録", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_user_session_path %>
-      </li>
-      <li>
-        <%= link_to "投稿一覧", posts_path %>
-      </li>
-      <li><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %></li>
+      <div class="container">
+
+        <div class="row row-cols-4">
+
+          <div class="col">
+            <%= link_to "新規登録", new_user_registration_path %>
+          </div>
+
+          <div class="col">
+            <%= link_to "ログイン", new_user_session_path %>
+          </div>
+
+          <div class="col">
+            <%= link_to "投稿一覧", posts_path %>
+          </div>
+
+          <div class="col">
+            <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
+          </div>
+
+        </div>
+      </div>
+
     <% end %>
   </header>
 

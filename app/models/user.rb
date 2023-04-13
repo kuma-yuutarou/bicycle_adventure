@@ -5,6 +5,7 @@ class User < ApplicationRecord
 
   has_many :posts
   has_many :likes, dependent: :destroy #いいね
+  has_many :comments, dependent: :destroy #dependent: :destroyこの場合　ユーザーが退会すると退会したユーザーのコメントが自動的に削除される
 
   def self.guest #ゲストログインの情報
     user=find_or_create_by!(email: 'guest@example.com') do |user|
