@@ -49,7 +49,7 @@ Rails.application.routes.draw do
 
   resources :posts do  #7つ含まれている　[index,show,new,create,edit,update,destroy]
     resource :likes, only: [:create, :destroy]
-    resources :comments, only: [:create]
+    resources :comments, only: [:create, :destroy]
   end
   # get 'posts/index'
   # get 'posts/show'

@@ -37,15 +37,19 @@
     </p>
   <% end %>
 
-  <%#= コメント機能%>
-  <p>コメント件数：<%#= @post.comments.count %></p>
-  <%# @post.comments.each do |post| %>
-    <%#= post_comment.user.name %>
-    <%#= post_comment.created_at.strftime('%Y/%m/%d') %>
-  <%# end %>
+  <%#= コメント機能 %>
+  <p>コメント件数：<%= @post.comments.count %></p>
+  <% @post.comments.each do |comment| %>
+    <%= comment.body %>
+    <%= comment.user.name %>
+    <%= comment.created_at.strftime('%Y/%m/%d') %>
+    <% if comment.user == current_user %>
+      <%= link_to "削除", post_comment_path(comment.id), method: :delete %>
+    <% end %>
+  <% end %>
 
   <%= form_with model: [@post, @comment] do |f| %>
-    <%= f.text_area :comments, rows: '5', placeholder: "コメントをここに" %>
+    <%= f.text_area :body, rows: '5', placeholder: "コメントをここに" %>
     <%= f.submit "送信する" %>
   <% end %>
 </div>
