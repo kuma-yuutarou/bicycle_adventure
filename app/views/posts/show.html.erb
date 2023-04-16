@@ -21,15 +21,14 @@
     <%= link_to "投稿削除", post_path(@post), method: :delete %>
   <% end %>
 
-  <% if @post.liked_by?(current_user) %> <%#= いいねボタン%><%#= いいね数%>
+  <%#= いいね機能%>
+  <% if @post.liked_by?(current_user) %>
     <p>
       <%= link_to post_likes_path(@post), method: :delete do %>
          ♥<%= @post.likes.count %> いいね
       <% end %>
     </p>
-
   <% else %>
-
     <p>
       <%= link_to post_likes_path(@post), method: :post do %>
         ♡<%= @post.likes.count %> いいね
@@ -40,8 +39,10 @@
   <%#= コメント機能 %>
   <p>コメント件数：<%= @post.comments.count %></p>
   <% @post.comments.each do |comment| %>
+    <%= link_to user_path(@post.id) do %>
+      <%= comment.user.name %>
+    <% end %>
     <%= comment.body %>
-    <%= comment.user.name %>
     <%= comment.created_at.strftime('%Y/%m/%d') %>
     <% if comment.user == current_user %>
       <%= link_to "削除", post_comment_path(comment.id), method: :delete %>
@@ -49,7 +50,7 @@
   <% end %>
 
   <%= form_with model: [@post, @comment] do |f| %>
-    <%= f.text_area :body, rows: '5', placeholder: "コメントをここに" %>
+    <%= f.text_area :body, rows: '10', placeholder: "コメントをここに" %>
     <%= f.submit "送信する" %>
   <% end %>
 </div>
