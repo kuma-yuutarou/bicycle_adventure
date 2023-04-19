@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   def index
+    @posts = Post.all
   end
 
   def show
@@ -29,6 +30,12 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to user_path(current_user.id)
+  end
+
+  def search
+    if params[:explanation].present?
+      @explanation = params[:explanation]
+    end
   end
 
   private
