@@ -15,7 +15,9 @@
   <%= @post.title %> <%#= タイトル名%>
   <%= image_tag @post.image, size: "200x200" %> <%#= 写真表示%>
   <%= @post.explanation %> <%#= 説明%>
-  <%= @post.prefecture_id %> <%#= 地名タグ%>
+  <% @post.tags.each do |tag| %><%#= 地名タグ%>
+    <span><%= tag.name %></span>
+  <% end %>
 
   <% if current_user == @user %> <%#= 投稿したユーザーにのみ表示%>
     <%= link_to "投稿削除", post_path(@post), method: :delete %>

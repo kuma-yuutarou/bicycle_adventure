@@ -13,6 +13,7 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
+import "../stylesheets/top"
 // FontAwesomeの記述
 import '@fortawesome/fontawesome-free/js/all'
 

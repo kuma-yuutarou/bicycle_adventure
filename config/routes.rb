@@ -42,6 +42,9 @@ Rails.application.routes.draw do
   resources :users,only: [:show, :edit, :update, :index] do
     get 'unsubscribe'
     patch 'withdrawal'
+    member do
+      get :likes
+    end
   end
   # get 'users/show'
   # get 'users/edit'
@@ -50,7 +53,9 @@ Rails.application.routes.draw do
   resources :posts do  #7つ含まれている　[index,show,new,create,edit,update,destroy]
     resource :likes, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
-    get 'search'
+    collection do
+      get 'search'
+    end
   end
   # get 'posts/index'
   # get 'posts/show'

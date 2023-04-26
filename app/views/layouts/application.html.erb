@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
-    <title>BicycleAdventure</title>
+    <meta charset="UTF-8" />
+    
+      <title>Bicycle Adventure</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %><%#=Bootstrap app/javascript 配下のファイルを参照 %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -15,64 +17,77 @@
     <% if user_signed_in? %> <%#ログインしているときの場合%>
 
       <div class="row justify-content-md-center">
-        <i class="fa-solid fa-person-biking-mountain fa-2xl" style="color: #ff7300;"><%= link_to "Bicycle Adventure", homes_top_path %></i>
+        <div class="title1">
+          <%= link_to "~Bicycle Adventure~", homes_top_path %>
+        </div>
       </div>
 
       <div class="container">
         <div class="row row-cols-4">
-
           <div class="col">
+            <button>
               <%= link_to "新規投稿", new_post_path %>
+            </button>
           </div>
-
           <div class="col">
+            <button>
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+            </button>
           </div>
-
           <div class="col">
+            <button>
               <%= link_to "投稿一覧", posts_path %>
+            </button>
           </div>
-
           <div class="col">
+            <button>
               <%= link_to "マイページ", user_path(current_user.id) %>
+            </button>
           </div>
-
         </div>
       </div>
 
     <% else %>
 
       <div class="row justify-content-md-center">
-        <i class="fa-solid fa-person-biking-mountain fa-2xl" style="color: #ff7300;"><%= link_to "Bicycle Adventure", homes_top_path %></i>
+        <div class="title1">
+          <%= link_to "~Bicycle Adventure~", homes_top_path %>
+        </div>
       </div>
 
       <div class="container">
         <div class="row">
         <div class="col-sm-9"></div>
-        <div class="col-sm-3"><%= link_to "管理者ログイン", new_admin_session_path %></div>
+        <div class="col-sm-3">
+          <button>
+          <%= link_to "管理者ログイン", new_admin_session_path %>
+          </button>
+        </div>
         </div>
       </div>
 
       <div class="container">
-
         <div class="row row-cols-4">
-
           <div class="col">
-            <%= link_to "新規登録", new_user_registration_path %>
+            <button>
+              <%= link_to "新規登録", new_user_registration_path %>
+            </button>
           </div>
-
           <div class="col">
-            <%= link_to "ログイン", new_user_session_path %>
+            <button>
+              <%= link_to "ログイン", new_user_session_path %>
+            </button>
           </div>
-
           <div class="col">
+            <button>
             <%= link_to "投稿一覧", posts_path %>
+            </button>
           </div>
-
           <div class="col">
+            <button>
             <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
+            </button>
           </div>
-
         </div>
       </div>
 

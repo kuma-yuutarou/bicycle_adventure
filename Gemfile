@@ -56,3 +56,6 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
+
+gem "geocoder" #地名から緯度経度に変換できるgem
+gem "dotenv-rails" #GoogleMapAPIのkeyを隠すためのgem

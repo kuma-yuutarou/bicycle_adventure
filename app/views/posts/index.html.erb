@@ -3,21 +3,28 @@
 </div>
 
 <div class="container">
-    <%#= form_with url: post_search_path, local: true, method: :get do |form| %>
-        <%#= form.text_field :explanation %>
-        <%#= form.submit "検索" %>
-    <%# end %>
+    <%= form_with url: search_posts_path, local: true, method: :get do |form| %><%#=キーワード検索%>
+        <%= form.text_field :keyword %>
+        <%= form.submit "検索" %>
+    <% end %>
+
+    <%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
+        <% Tag.all.each do |t| %>
+            <li><%= check_box :tag_ids, t.name %><%= t.name %></li>
+        <% end %>
+        <%= submit_tag '検索' %>
+    <% end %>
 
     <% @posts.each do |post| %>
-        <%#= link_to post_path(post.id) do %>
+        <%= link_to post_path(post.id) do %>
             <%= post.title %>
-            <%# post.users.each do |user| %>
-                <%#= user.name %>
-            <%# end %>
-            <%= post.prefecture_id %>
+            <%= post.user.name %>
+            <% post.tags.each do |tag| %>
+                <span><%= tag.name %></span>
+            <% end %>
             <%= post.likes.count %>
-            <%= image_tag post.get_profile_image(100,100) %>
-        <%# end %>
+            <%= image_tag post.image, size: "200x200" %>
+        <% end %>
     <% end %>
 </div>
 

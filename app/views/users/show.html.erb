@@ -7,22 +7,22 @@
 </div>
 
 <div class="container">
- <%= image_tag @user.image, size: "200x200" %> <%#アイコン画像%>
- <%= @user.name %> <%#名前%>
- <%= @user.age %> <%#年齢%>
- <%= @user.gender %> <%#性別%>
- <%= @user.introduction %> <%#自己紹介文%>
+ <div class="row justify-content-md-center">
+  <%= image_tag @user.image, size: "200x200" %> <%#アイコン画像%>
+  <%= @user.name %> <%#名前%>
+  <%= @user.age %> <%#年齢%>
+  <%= @user.gender %> <%#性別%>
+  <%= @user.introduction %> <%#自己紹介文%>
 
- <%#= フォロー数・フォロワー数 %>
+  <%#= 投稿内容 タイトル名と投稿詳細ページに飛ぶ %>
+  <% @posts.each do |post| %>
+   <%= link_to post.title, post_path(post.id) %> <%#タイトルと詳細画面のパス%>
+  <% end %>
 
- <%#= 投稿内容 タイトル名と投稿詳細ページに飛ぶ %>
- <% @posts.each do |post| %>
-  <%= link_to post.title, post_path(post.id) %> <%#タイトルと詳細画面のパス%>
- <% end %>
-
- <% if current_user == @user %> <%# @user指定したユーザー currentはログインしている%>
-  <%= link_to "いいね通知", notifications_path %>
-  <%= link_to "マイページ編集", edit_user_path %>
-  <%= link_to "退会", user_unsubscribe_path(@user.id) %>
- <% end %>
+  <% if current_user == @user %> <%# @user指定したユーザー currentはログインしている%>
+   <%= link_to "いいね通知", notifications_path %>
+   <%= link_to "マイページ編集", edit_user_path %>
+   <%= link_to "退会", user_unsubscribe_path(@user.id) %>
+  <% end %>
+ </div>
 </div>

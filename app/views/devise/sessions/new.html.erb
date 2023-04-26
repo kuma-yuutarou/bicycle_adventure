@@ -3,29 +3,31 @@
 </div>
 
 <div class="container">
+  <div class="row justify-content-md-center">
 
-  <%= form_with model: @user, url: user_session_path do |f| %>
-    <div class="field">
-      <%= f.label :メールアドレス %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :パスワード %><br />
-      <%= f.password_field :password, autocomplete: "current-password" %>
-    </div>
-
-    <% if devise_mapping.rememberable? %>
+    <%= form_with model: @user, url: user_session_path do |f| %>
       <div class="field">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
+        <%= f.label :メールアドレス %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
+
+      <div class="field">
+        <%= f.label :パスワード %><br />
+        <%= f.password_field :password, autocomplete: "current-password" %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end %>
+
+      <div class="actions">
+        <%= f.submit "ログイン" %>
+      </div>
+
+      登録がお済でない方は<%= link_to "こちら",  new_user_registration_path %>
     <% end %>
-
-    <div class="actions">
-      <%= f.submit "ログイン" %>
-    </div>
-  <% end %>
-
-  登録がお済でない方は<%= link_to "こちら",  new_user_registration_path %>
+  </div>
 </div>

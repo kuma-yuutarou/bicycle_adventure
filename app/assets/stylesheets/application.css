@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+.title1 {
+  font-size: 100px;
+  font-family:cursive;
+  color: black;
+}
+
+.box2 {
+  height: 80px;
+  background-image: url(mv.jpg);
+}

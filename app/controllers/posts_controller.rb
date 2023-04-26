@@ -33,14 +33,17 @@ class PostsController < ApplicationController
   end
 
   def search
-    if params[:explanation].present?
-      @explanation = params[:explanation]
+    if params[:keyword].present?
+      @posts = Post.where('explanation LIKE ?', "%#{params[:keyword]}%")
+      @keyword = params[:keyword]
+    else
+      @posts = Post.all
     end
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:title, :image, :explanation, :prefecture_id, :user_id)
+    params.require(:post).permit(:title, :image, :explanation, :prefecture_id, :user_id, :address, :latitude, :longitude, tag_ids: [])
   end
 end
