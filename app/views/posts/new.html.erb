@@ -16,11 +16,9 @@
 
     <%#= f.select :prefecture_id, Post.prefecture_ids.keys, {prompt: '選択してください'} %> <%#配列を入れる※複数形で記述 　今回はモデルでenumを定義しているカラム名を入れる　%>
 
-    <%= form_with(model: @post, local: true, class: "mt-4 form-column-width") do |f| %>
-      <%= f.label :address, class: "form-label fw-bold"%>
-      <%= f.text_field :address, autofocus: true,placeholder: "住所を入力してください", class: "form-control" %>
-      <%#= f.submit (@post.new_record? ? "投稿する" : "更新する"), class: "btn btn-primary mb-4" %>
-    <% end %>
+    <%= f.label :address, class: "form-label fw-bold"%>
+    <%= f.text_field :address, autofocus: true,placeholder: "住所を入力してください", class: "form-control" %>
+    <%#= f.submit (@post.new_record? ? "投稿する" : "更新する"), class: "btn btn-primary mb-4" %>
 
     <div class='form-group'>
       <%= f.label "地名タグを選択" %>

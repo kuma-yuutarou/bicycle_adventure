@@ -3,8 +3,8 @@ class Post < ApplicationRecord
   has_one_attached :image#画像を保存させる機能
 
   #↓住所登録時と変更時にgeocoderが緯度・経度のデータを登録・更新してくれる
-  # geocoded_by :address
-  # after_validation :geocode
+  geocoded_by :address
+  after_validation :geocode
 
   belongs_to :user
   has_many :comments, dependent: :destroy #dependent: :destroyこの場合　投稿が削除されると今までのコメントが自動的に削除される
