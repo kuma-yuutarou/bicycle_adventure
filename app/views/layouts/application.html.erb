@@ -15,85 +15,83 @@
 
   <body>
     <header>
-    <% if user_signed_in? %> <%#ログインしているときの場合%>
+      <% if user_signed_in? %> <%#ログインしているときの場合%>
 
-      <div class="row justify-content-md-center">
-        <div class="title1">
-          <%= link_to "~Bicycle Adventure~", homes_top_path %>
+        <div class="row justify-content-md-center">
+          <div class="title1">
+            <%= link_to "~Bicycle Adventure~", homes_top_path, style: "color: black;"%>
+          </div>
         </div>
-      </div>
 
-      <div class="container">
-        <div class="row row-cols-4">
-          <div class="col">
+        <div class="container">
+          <div class="row row-cols-4">
+            <div class="col">
+              <button>
+                <%= link_to "新規投稿", new_post_path %>
+              </button>
+            </div>
+            <div class="col">
+              <button>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+              </button>
+            </div>
+            <div class="col">
+              <button>
+                <%= link_to "投稿一覧", posts_path %>
+              </button>
+            </div>
+            <div class="col">
+              <button>
+                <%= link_to "マイページ", user_path(current_user.id) %>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      <% else %>
+
+        <div class="row justify-content-md-center">
+          <div class="title1">
+            <%= link_to "~Bicycle Adventure~", homes_top_path, style: "color: black;"%>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="row">
+          <div class="col-sm-9"></div>
+          <div class="col-sm-3">
             <button>
-              <%= link_to "新規投稿", new_post_path %>
+            <%= link_to "管理者ログイン", new_admin_session_path %>
             </button>
           </div>
-          <div class="col">
-            <button>
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-            </button>
           </div>
-          <div class="col">
-            <button>
+        </div>
+
+        <div class="container">
+          <div class="row row-cols-4">
+            <div class="col">
+              <button>
+                <%= link_to "新規登録", new_user_registration_path %>
+              </button>
+            </div>
+            <div class="col">
+              <button>
+                <%= link_to "ログイン", new_user_session_path %>
+              </button>
+            </div>
+            <div class="col">
+              <button>
               <%= link_to "投稿一覧", posts_path %>
-            </button>
+              </button>
+            </div>
+            <div class="col">
+              <button>
+              <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
+              </button>
+            </div>
           </div>
-          <div class="col">
-            <button>
-              <%= link_to "マイページ", user_path(current_user.id) %>
-            </button>
-          </div>
-        </div>
-      </div>
-
-    <% else %>
-
-      <div class="row justify-content-md-center">
-        <div class="title1">
-          <%= link_to "~Bicycle Adventure~", homes_top_path %>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-        <div class="col-sm-9"></div>
-        <div class="col-sm-3">
-          <button>
-          <%= link_to "管理者ログイン", new_admin_session_path %>
-          </button>
-        </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row row-cols-4">
-          <div class="col">
-            <button>
-              <%= link_to "新規登録", new_user_registration_path %>
-            </button>
-          </div>
-          <div class="col">
-            <button>
-              <%= link_to "ログイン", new_user_session_path %>
-            </button>
-          </div>
-          <div class="col">
-            <button>
-            <%= link_to "投稿一覧", posts_path %>
-            </button>
-          </div>
-          <div class="col">
-            <button>
-            <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
-            </button>
-          </div>
-        </div>
-      </div>
-
-    <% end %>
-  </header>
+      <% end %>
+    </header>
 
     <%= yield %>
   </body>

@@ -3,8 +3,16 @@
 /*  height: 300px;*/
 /*}*/
 
-.box2 {
-  height: 800px;
+.box {
+  height: 650px;
   background-image: url(../sky/sky.jpg);
   background-size: cover;
+}
+
+.box1 {
+  height: 70px;
+}
+
+.box2 {
+  font-size: 40px;
 }
