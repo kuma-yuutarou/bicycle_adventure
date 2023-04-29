@@ -1,2 +1,17 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<div class="row justify-content-md-center">
+  <h1>会員情報</h1>
+</div>
+
+<div class="container">
+  <div class="row justify-content-md-center">
+    <%= image_tag @user.image, size: "200x200" %>
+    <%= @user.name %>
+    <%= @user.age %>
+    <%= @user.gender %>
+    <%= @user.introduction %>
+
+    <% @posts.each do |post| %>
+      <%= link_to post.title, admin_post_path(post.id) %> <%#タイトルと詳細画面のパス%>
+    <% end %>
+  </div>
+</div>

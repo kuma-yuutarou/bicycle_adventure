@@ -13,10 +13,21 @@
  *= require_tree .
  *= require_self
  */
+ header {
+   background-color: #008080;
+   border-bottom: solid 3px black;
+ }
+
+ .col {
+  padding-bottom: 20px;
+ }
+
 .title1 {
   font-size: 75px;
   font-family:cursive;
 }
+
+
 
 #map{
   width: 100%;

@@ -1,6 +1,3 @@
-
-
-
 <div class="row justify-content-md-center">
   <h1>投稿詳細</h1>
 </div>
@@ -8,7 +5,7 @@
 <div class="container">
 
   <%#= 投稿ユーザー情報%><%#= 画像・名前・年齢・性別%>
-  <%= link_to user_path(@post.user.id) do %>
+  <%= link_to admin_user_path(@post.user.id) do %>
     <%= image_tag @post.user.image, size: "200x200" %>
     <%= @post.user.name %>
   <% end %>
@@ -24,24 +21,13 @@
     <span><%= tag.name %></span>
   <% end %>
 
-  <% if current_user == @user %> <%#= 投稿したユーザーにのみ表示%>
     <%= link_to "投稿削除", post_path(@post), method: :delete %>
-  <% end %>
 
   <%#= いいね機能%>
-  <% if @post.liked_by?(current_user) %>
     <p>
-      <%= link_to post_likes_path(@post), method: :delete do %>
          ♥<%= @post.likes.count %> いいね
-      <% end %>
     </p>
-  <% else %>
-    <p>
-      <%= link_to post_likes_path(@post), method: :post do %>
-        ♡<%= @post.likes.count %> いいね
-      <% end %>
-    </p>
-  <% end %>
+
 
   <h5>住所</h5>
 <p><%= @post.address %></p>
@@ -57,15 +43,9 @@
     <% end %>
     <%= comment.body %>
     <%= comment.created_at.strftime('%Y/%m/%d') %>
-    <% if comment.user == current_user %>
       <%= link_to "削除", post_comment_path(comment.id), method: :delete %>
-    <% end %>
   <% end %>
 
-  <%= form_with model: [@post, @comment] do |f| %>
-    <%= f.text_area :body, rows: '10', placeholder: "コメントをここに" %>
-    <%= f.submit "送信する" %>
-  <% end %>
 </div>
 
 

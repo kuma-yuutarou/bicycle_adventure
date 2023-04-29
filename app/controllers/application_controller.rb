@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     when Admin
       admin_users_path
     when User
-      user_path(user.id)
+      user_path(@user.id)
     end
   end
 

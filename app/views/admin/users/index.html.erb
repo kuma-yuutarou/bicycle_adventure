@@ -1,2 +1,19 @@
-<h1>Admin::Users#index</h1>
-<p>Find me in app/views/admin/users/index.html.erb</p>
+<div class="row justify-content-md-center">
+  <h1>会員一覧</h1>
+</div>
+
+<div class="container">
+  <div class="row justify-content-md-center">
+    <% @users.each do |user| %>
+      <%= link_to admin_user_path(user.id) do %>
+        <%= user.name %>
+      <% end %>
+      <%= user.email %>
+      <% if user.is_active %>
+        有効
+      <% else %>
+        退会
+      <% end %>
+  <% end %>
+  </div>
+</div>
