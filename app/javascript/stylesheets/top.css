@@ -1,8 +1,7 @@
 .box {
-  height: 580px;
-
   background-image: url(../sky/sky.jpg);
   background-size: cover;
+  min-height: 100vh;
 }
 
 .box1 {
@@ -10,5 +9,5 @@
 }
 
 .box2 {
-  font-size: 40px;
+  font-size: 30px;
 }

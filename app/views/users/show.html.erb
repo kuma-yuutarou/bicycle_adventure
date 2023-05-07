@@ -1,28 +1,81 @@
-<div class="row justify-content-md-center">
+<!DOCTYPE html>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="users.css">
+
+<div class="box5">
+ <div class="row justify-content-md-center">
  <% if current_user == @user %>
- <h1>マイページ</h1>
+ <h1><font color="#FFFFFF">マイページ</font></h1>
  <% else %>
- <h1>ユーザー紹介</h1>
+ <h1><font color="#FFFFFF">ユーザー紹介</font></h1>
 <% end %>
 </div>
 
+ <div class="row justify-content-md-center">
+  <div class="card">
+   <div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+     <div class="col-md-4">
+      <%= image_tag @user.image, size: "200x200" %> <%#アイコン画像%>
+     </div>
+     <div class="col-md-8">
+      <div class="card-body">
+       <h5 class="card-title">名前・<%= @user.name %> <%#名前%></h5>
+       <p class="card-text">
+          年齢・<%= @user.age %>歳 <%#年齢%>
+          性別・<%= @user.gender %> <%#性別%>
+       </p>
+       <p class="card-text">自己紹介</br><%= @user.introduction %> <%#自己紹介文%><%#=small class="text-muted"><%/mall%></p>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+
+<div class="col"></div>
+
 <div class="container">
  <div class="row justify-content-md-center">
-  <%= image_tag @user.image, size: "200x200" %> <%#アイコン画像%>
-  <%= @user.name %> <%#名前%>
-  <%= @user.age %> <%#年齢%>
-  <%= @user.gender %> <%#性別%>
-  <%= @user.introduction %> <%#自己紹介文%>
 
-  <%#= 投稿内容 タイトル名と投稿詳細ページに飛ぶ %>
-  <% @posts.each do |post| %>
-   <%= link_to post.title, post_path(post.id) %> <%#タイトルと詳細画面のパス%>
-  <% end %>
+  <table class="table table-hover table-inverse",border="1">
+   <thead>
+    <tr>
+     <th>投稿タイトル一覧</th>
+    </tr>
+   </thead>
 
-  <% if current_user == @user %> <%# @user指定したユーザー currentはログインしている%>
-   <%= link_to "いいね通知", notifications_path %>
-   <%= link_to "マイページ編集", edit_user_path %>
-   <%= link_to "退会", user_unsubscribe_path(@user.id) %>
-  <% end %>
+   <tbody>
+    <% @posts.each do |post| %>
+    <tr>
+     <td><%= link_to post.title, post_path(post.id) %></td><%#タイトルと詳細画面のパス%>
+    </tr>
+    <% end %>
+   </tbody>
+  </table>
+
  </div>
+</div>
+
+<div class="col"></div>
+
+<div class="container">
+  <div class="row justify-content-md-center">
+   <div class="row">
+    <% if current_user == @user %> <%# @user指定したユーザー currentはログインしている%>
+     <div class="col">
+       <button type="button" class="btn btn-danger"><%= link_to "いいね通知", notifications_path, style: "color: black;" %></button>
+     </div>
+     <div class="col">
+       <button type="button" class="btn btn-success"><%= link_to "マイページ編集", edit_user_path, style: "color: black;" %></button>
+     </div>
+     <div class="col">
+       <button type="button" class="btn btn-warning"><%= link_to "退会", user_unsubscribe_path(current_user.id), style: "color: black;" %></button>
+     </div>
+    <% end %>
+   </div>
+ </div>
+</div>
+</div>
+
 </div>

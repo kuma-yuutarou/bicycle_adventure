@@ -5,7 +5,7 @@
 <div class="container">
 
   <%#= 投稿ユーザー情報%><%#= 画像・名前・年齢・性別%>
-  <%= link_to admin_user_path(@post.user.id) do %>
+  <%= link_to admin_user_path(@post.user_id) do %>
     <%= image_tag @post.user.image, size: "200x200" %>
     <%= @post.user.name %>
   <% end %>
@@ -21,7 +21,7 @@
     <span><%= tag.name %></span>
   <% end %>
 
-    <%= link_to "投稿削除", post_path(@post), method: :delete %>
+    <%= link_to "投稿削除", admin_post_path(@post), method: :delete %>
 
   <%#= いいね機能%>
     <p>
@@ -43,7 +43,7 @@
     <% end %>
     <%= comment.body %>
     <%= comment.created_at.strftime('%Y/%m/%d') %>
-      <%= link_to "削除", post_comment_path(comment.id), method: :delete %>
+      <%= link_to "削除", admin_post_comment_path(@post.id,comment.id), method: :delete %>
   <% end %>
 
 </div>

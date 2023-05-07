@@ -1,0 +1,10 @@
+.box5 {
+  background-image: url(../gears/gears1920.jpg);
+  background-size: cover;
+  min-height: 100vh;
+}
+
+table {
+  background-color: #ffffff;
+  text-align:center;
+}

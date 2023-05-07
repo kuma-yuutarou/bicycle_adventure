@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, except: [:index] #exceptが除く
+
   def index
     @posts = Post.all.page(params[:page]).per(3)
   end
@@ -6,7 +8,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
-    @user = current_user
+    @user = User.find(@post.user_id)
   end
 
   def new

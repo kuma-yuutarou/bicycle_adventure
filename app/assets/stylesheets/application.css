@@ -23,11 +23,12 @@
  }
 
 .title1 {
+  text-align:center;
   font-size: 75px;
   font-family:cursive;
+  display: block;
+  text-decoration-line: none;
 }
-
-
 
 #map{
   width: 100%;

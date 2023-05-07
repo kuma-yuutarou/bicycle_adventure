@@ -1,14 +1,14 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:likes]
-  
+
   def likes
     likes = Like.where(user_id: @user.id).pluck(:post_id)
     @like_posts = Post.find(likes)
   end
-  
+
   def show
-    @user = current_user #ログインしているユーザー
-    @posts = Post.all
+    @user = User.find(params[:id])
+    @posts = Post.where(user_id: @user.id)
   end
 
   def edit
@@ -39,11 +39,11 @@ class UsersController < ApplicationController
   end
 
   private
-  
+
   def set_user
     @user = User.find(params[:id])
   end
-  
+
   def user_params
     params.require(:user).permit(:name, :age, :gender, :introduction, :image, :email, :telephone_number, :encrypted_password, :is_active)
   end

@@ -1,14 +1,16 @@
-<div class="row justify-content-md-center">
-  <h1>いいね通知</h1>
+<div class="box9">
+  <div class="row justify-content-md-center">
+    <h1>いいね通知</h1>
+  </div>
+
+  <div class="container">
+    <% @like_posts.each do |like_post| %>
+      <%= render partial: "posts/post", locals: { post: like_post } %>
+    <% end %>
+  </div>
 </div>
 
-<div class="container">
-  <% @like_posts.each do |like_post| %>
-    <%= render partial: "posts/post", locals: { post: like_post } %>
-  <% end %>
-</div>
 
 
 
 <%#= いいねした投稿　投稿タイトル名と投稿詳細に飛ぶ  %>
-<%#= いいねされた投稿　投稿タイトル名・いいねをした人の名前を表示投稿詳細ページに飛ぶ　※ユーザー紹介ページに飛ぶ　%>

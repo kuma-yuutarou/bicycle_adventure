@@ -14,7 +14,12 @@ import "popper.js";
 import "bootstrap";
 
 import "../stylesheets/application"
+import "../stylesheets/sessions"
+import "../stylesheets/registrations"
+import "../stylesheets/posts"
 import "../stylesheets/top"
+import "../stylesheets/users"
+import "../stylesheets/notifications"
 // FontAwesomeの記述
 import '@fortawesome/fontawesome-free/js/all'
 

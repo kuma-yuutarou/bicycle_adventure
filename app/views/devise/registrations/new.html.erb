@@ -1,72 +1,72 @@
-<div class="row justify-content-md-center">
-  <h2>新規登録</h2>
-</div>
+<!DOCTYPE html>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="registrations.css">
 
-<div class="container">
-  <div class="row justify-content-md-center">
-    <%= form_with model: @user, url: user_registration_path do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="box3">
+    <div class="row justify-content-md-center">
+      <h2>新規登録</h2>
+    </div>
 
-      <div class="row">
-        <div class="field">
-          <div class="col">
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <%= form_with model: @user, url: user_registration_path do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+
+          <div class="field">
             <%= f.label :名前 %>
+            <%= f.text_field :name, class: "form-control" %>
           </div>
-          <div class="col">
-            <%= f.text_field :name %>
+
+          <div class="field">
+            <%= f.label :年齢 %>
+            <%= f.number_field :age, class: "form-control" %>
           </div>
+
+          <div class="field">
+            <%= f.label :性別 %>
+            <%= f.text_field :gender, class: "form-control" %> <%#セレクトタグ　男か女%>
+          </div>
+
+          <div class="field">
+            <%= f.label :自己紹介 %>
+            <%= f.text_area :introduction, rows: "7", class: "form-control" %> <%#= rows: "7"で7行まで入力 %>
+          </div>
+
+          <div class="field">
+            <%= f.label :アイコン画像 %>
+            <%= f.file_field :image, accept: "image/*", class: "form-control" %> <%#accept: "image/*"で画像ファイルしか投稿できないようにしている%>
+          </div>
+
+          <div class="field">
+            <%= f.label :メールアドレス %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :電話番号（ハイフンなし） %>
+            <%= f.text_field :telephone_number, class: "form-control" %> <%#モデルの方で数字だけを通せるようにする%>
+          </div>
+
+          <div class="field">
+            <%= f.label :パスワード %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> 文字以上)</em>
+            <% end %>
+            <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :パスワード（確認） %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+          </div>
+
+          <div class="col"></div>
+          <div class="actions">
+            <%= f.submit "新規登録", class: "btn btn-lg btn-primary btn-block" %>
+          </div>
+          登録済みの方は<%= link_to "こちら",  new_user_session_path %>
+        <% end %>
+
         </div>
       </div>
-
-      <div class="field">
-        <%= f.label :年齢 %><br>
-        <%= f.number_field :age %>
-      </div>
-
-      <div class="field">
-        <%= f.label :性別 %><br>
-        <%= f.text_field :gender %> <%#セレクトタグ　男か女%>
-      </div>
-
-      <div class="field">
-        <%= f.label :自己紹介 %><br>
-        <%= f.text_area :introduction, rows: "7" %> <%#= rows: "7"で7行まで入力 %>
-      </div>
-
-      <div class="field">
-        <%= f.label :アイコン画像 %><br>
-        <%= f.file_field :image, accept: "image/*" %> <%#accept: "image/*"で画像ファイルしか投稿できないようにしている%>
-      </div>
-
-      <div class="field">
-        <%= f.label :メールアドレス %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-      </div>
-
-      <div class="field">
-        <%= f.label :電話番号（ハイフンなし） %><br>
-        <%= f.text_field :telephone_number %> <%#モデルの方で数字だけを通せるようにする%>
-      </div>
-
-      <div class="field">
-        <%= f.label :パスワード %>
-        <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> 文字以上)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password" %>
-      </div>
-
-      <div class="field">
-        <%= f.label :パスワード（確認） %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-      </div>
-
-      <div class="actions">
-        <%= f.submit "新規登録" %>
-      </div>
-      登録済みの方は<%= link_to "こちら",  new_user_session_path %>
-    <% end %>
-  </div>
-</div>
-
-
+    </div>

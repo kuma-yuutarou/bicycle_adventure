@@ -9,10 +9,10 @@
         <%= user.name %>
       <% end %>
       <%= user.email %>
-      <% if user.is_active %>
-        有効
-      <% else %>
+      <% if user.is_active == false %>
         退会
+      <% else %>
+        有効
       <% end %>
   <% end %>
   </div>

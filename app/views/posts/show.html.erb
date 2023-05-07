@@ -1,73 +1,110 @@
+<div class="box7">
+  <div class="row justify-content-md-center">
+    <h1>投稿詳細</h1>
+  </div>
 
+  <div class="row justify-content-md-center">
+    <div class="container">
 
+      <div class="card" style="width: 15rem;"><%#= 投稿ユーザー情報%>
+        <%= link_to user_path(@post.user_id) do %><%#= 画像・名前・年齢・性別%><%#= image_tag @post.user.image, size: "200x200" %>
+          <div class="card-body">
+            <h5 class="card-title">投稿者情報</h5>
+            <h6 class="card-subtitle mb-2 text-muted"><%= @post.user.name %></h6>
+            <p class="card-text"><%= @post.user.age %>歳<%= @post.user.gender %></p>
+          </div>
+        <% end %>
+      </div>
 
-<div class="row justify-content-md-center">
-  <h1>投稿詳細</h1>
-</div>
+      <div class="col"></div>
 
-<div class="container">
+    <div class="box8">
+      <div class="container">
+        <div class="row justify-content-md-center">
 
-  <%#= 投稿ユーザー情報%><%#= 画像・名前・年齢・性別%>
-  <%= link_to user_path(@post.user.id) do %>
-    <%= image_tag @post.user.image, size: "200x200" %>
-    <%= @post.user.name %>
-  <% end %>
-  <%= @post.user.age %>
-  <%= @post.user.gender %>
+          <div class="card" style="width: 70rem;"><%#= 投稿情報%>
+            <div class="image">
+              <% if @post.image.attached? %>
+                <%= image_tag @post.image, size: "300x300" %> <%#= 写真表示%>
+              <% end %>
+            </div>
 
-  <%= @post.title %> <%#= タイトル名%>
-  <% if @post.image.attached? %>
-    <%= image_tag @post.image, size: "200x200" %> <%#= 写真表示%>
-  <% end %>
-  <%= @post.explanation %> <%#= 説明%>
-  <% @post.tags.each do |tag| %><%#= 地名タグ%>
-    <span><%= tag.name %></span>
-  <% end %>
+            <div class="card-body">
+              <p class="card-text">
+                タイトル名・<%= @post.title %></br> <%#= タイトル名%>
+                説明・<%= @post.explanation %></br> <%#= 説明%>
+                <% @post.tags.each do |tag| %><%#= 地名タグ%>
+                  地名タグ・<span><%= tag.name %></span>
+                <% end %>
+                <%#= いいね機能%>
+                <% if @post.liked_by?(current_user) %>
+                  <p>
+                    いいね数 <%= @post.likes.count %>
+                    <%= link_to post_likes_path(@post), method: :delete do %>
+                       <i class="fas fa-heart unlike-btn"><%= @post.likes.count %></i>
+                    <% end %>
+                  </p>
+                <% else %>
+                  <p>
+                    いいね数 <%= @post.likes.count %>
+                    <%= link_to post_likes_path(@post), method: :post do %>
+                      <i class="far fa-heart like-btn">いいね！<%= @post.likes.count %></i>
+                    <% end %>
+                  </p>
+                <% end %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <% if current_user == @user %> <%#= 投稿したユーザーにのみ表示%>
-    <%= link_to "投稿削除", post_path(@post), method: :delete %>
-  <% end %>
+<div class="col"></div>
 
-  <%#= いいね機能%>
-  <% if @post.liked_by?(current_user) %>
-    <p>
-      <%= link_to post_likes_path(@post), method: :delete do %>
-         ♥<%= @post.likes.count %> いいね
+      <% if current_user == @user %> <%#= 投稿したユーザーにのみ表示%>
+        <button type="button" class="btn btn-danger"><%= link_to "投稿削除", post_path(@post), method: :delete, style: "color: black;" %></button>
       <% end %>
-    </p>
-  <% else %>
-    <p>
-      <%= link_to post_likes_path(@post), method: :post do %>
-        ♡<%= @post.likes.count %> いいね
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <h5>~住所~</h5></br>
+      <p><%= @post.address %></p>
+      <div id="map"><!-- Googleマップ表示エリア(地図を表示) --></div>
+
+    </div>
+  </div>
+
+<div class="col"></div>
+
+  <div class="container">
+    <div class="">
+      <%#= コメント機能 %>
+      <p>コメント件数：<%= @post.comments.count %></p>
+      <% @post.comments.each do |comment| %>
+       <div>
+        <%= link_to user_path(@post.id) do %>
+          <%= comment.user.name %>
+        <% end %>
+        <%= comment.body %>
+        <%= comment.created_at.strftime('%Y/%m/%d') %>
+        <% if comment.user == current_user %>
+          <%= link_to "削除", post_comment_path(comment.id), method: :delete %>
+        <% end %>
+       </div>
       <% end %>
-    </p>
-  <% end %>
 
-  <h5>住所</h5>
-<p><%= @post.address %></p>
+      <%= form_with model: [@post, @comment] do |f| %>
+        <%= f.text_area :body, rows: '10', placeholder: "コメントをここに", class: "form-control" %>
+        <div class="actions">
+          <%= f.submit "送信する", class: "btn btn-lg btn-primary btn-block" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
-<!-- Googleマップ表示エリア(地図を表示) -->
-<div id="map"></div>
-
-  <%#= コメント機能 %>
-  <p>コメント件数：<%= @post.comments.count %></p>
-  <% @post.comments.each do |comment| %>
-    <%= link_to user_path(@post.id) do %>
-      <%= comment.user.name %>
-    <% end %>
-    <%= comment.body %>
-    <%= comment.created_at.strftime('%Y/%m/%d') %>
-    <% if comment.user == current_user %>
-      <%= link_to "削除", post_comment_path(comment.id), method: :delete %>
-    <% end %>
-  <% end %>
-
-  <%= form_with model: [@post, @comment] do |f| %>
-    <%= f.text_area :body, rows: '10', placeholder: "コメントをここに" %>
-    <%= f.submit "送信する" %>
-  <% end %>
 </div>
-
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuRsdadlZWuqaG1_7G9qwjLB5fimOn5Ag&callback=initMap" async defer></script>
 

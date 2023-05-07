@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html lang="ja">
   <meta charset="UTF-8" />
-  <link rel="stylesheet" href="application.css">
+  <link rel="stylesheet" href="top.css">
 
   <div class="box">
 
@@ -20,9 +19,13 @@
       <div class="box2">
         <%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
           <% Tag.all.each do |t| %>
-            <span class="pb-2"><%= check_box :tag_ids, t.name %><%= t.name %></span>
+          <div class='form-check d-inline'>
+            <%= check_box :tag_ids, t.name %>
+            <label for="tag_ids_<%= t.name %>"><%= t.name %></label>
+          </div>
           <% end %>
-          <%= submit_tag '検索' %>
+            <%= submit_tag '検索' %>
+
         <% end %>
       </div>
 
@@ -30,4 +33,9 @@
 
   </div>
 
-</html>
+<style>
+  label {
+    margin: 0;
+    display: inherit;
+  }
+</style>
