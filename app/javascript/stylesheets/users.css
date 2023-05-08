@@ -4,7 +4,23 @@
   min-height: 100vh;
 }
 
+.box10 {
+  background-color: #3CB371;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.box11 {
+  text-align: right;
+}
+
+.box12 {
+  background-color: #ffa500;
+  min-height: 100vh;
+}
+
 table {
   background-color: #ffffff;
   text-align:center;
 }
+

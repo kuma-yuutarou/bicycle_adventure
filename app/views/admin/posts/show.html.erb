@@ -4,50 +4,72 @@
 
 <div class="container">
 
-  <%#= 投稿ユーザー情報%><%#= 画像・名前・年齢・性別%>
-  <%= link_to admin_user_path(@post.user_id) do %>
-    <%= image_tag @post.user.image, size: "200x200" %>
-    <%= @post.user.name %>
-  <% end %>
-  <%= @post.user.age %>
-  <%= @post.user.gender %>
+    <div class="card" style="width: 15rem;"><%#= 投稿ユーザー情報%>
+      <%= link_to admin_user_path(@post.user_id) do %><%#= 画像・名前・年齢・性別%><%#= image_tag @post.user.image, size: "200x200" %>
+        <div class="card-body">
+          <h5 class="card-title">投稿者情報</h5>
+          <h6 class="card-subtitle mb-2 text-muted"><%= @post.user.name %></h6>
+            <p class="card-text"><%= @post.user.age %>歳<%= @post.user.gender %></p>
+        </div>
+      <% end %>
+    </div>
 
-  <%= @post.title %> <%#= タイトル名%>
-  <% if @post.image.attached? %>
-    <%= image_tag @post.image, size: "200x200" %> <%#= 写真表示%>
-  <% end %>
-  <%= @post.explanation %> <%#= 説明%>
-  <% @post.tags.each do |tag| %><%#= 地名タグ%>
-    <span><%= tag.name %></span>
-  <% end %>
+  <div class="col"></div>
 
-    <%= link_to "投稿削除", admin_post_path(@post), method: :delete %>
+  <div class="container">
+    <div class="card" style="width: 70rem;">
+      <div class="image">
+        <% if @post.image.attached? %>
+          <%= image_tag @post.image, size: "300x300" %> <%#= 写真表示%>
+        <% end %>
+      </div>
 
-  <%#= いいね機能%>
-    <p>
-         ♥<%= @post.likes.count %> いいね
-    </p>
+      <div class="card-body">
+        <div class="row justify-content-md-center">
+          <p class="card-text">
+            タイトル名・ <%= @post.title %></br> <%#= タイトル名%>
+            説明・<%= @post.explanation %></br> <%#= 説明%>
+            <% @post.tags.each do |tag| %><%#= 地名タグ%>
+              地名タグ・<span><%= tag.name %></span></br>
+            <% end %>
+            <%#= いいね機能%>
+            いいね数　<%= @post.likes.count %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <div class="col"></div>
+<button type="button" class="btn btn-danger"><%= link_to "投稿削除", admin_post_path(@post), method: :delete, style: "color: black;" %></button>
+</div>
 
-  <h5>住所</h5>
-<p><%= @post.address %></p>
+<div class="col"></div>
 
-<!-- Googleマップ表示エリア(地図を表示) -->
-<div id="map"></div>
+<div class="container">
+  <div class="row justify-content-md-center">
+     <h5>~住所~</h5></br>
+     <p><%= @post.address %></p>
+     <div id="map"><!-- Googleマップ表示エリア(地図を表示) --></div>
+  </div>
+</div>
 
-  <%#= コメント機能 %>
+<div class="col"></div>
+
+<div class="container"> <%#= コメント機能 %>
   <p>コメント件数：<%= @post.comments.count %></p>
   <% @post.comments.each do |comment| %>
+  <div>
     <%= link_to user_path(@post.id) do %>
       <%= comment.user.name %>
     <% end %>
     <%= comment.body %>
     <%= comment.created_at.strftime('%Y/%m/%d') %>
-      <%= link_to "削除", admin_post_comment_path(@post.id,comment.id), method: :delete %>
+    <button><%= link_to "削除", admin_post_comment_path(@post.id,comment.id), method: :delete %></button>
+  </div>
   <% end %>
-
 </div>
-
+<div class="col"></div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuRsdadlZWuqaG1_7G9qwjLB5fimOn5Ag&callback=initMap" async defer></script>
 

@@ -4,14 +4,47 @@
 
 <div class="container">
   <div class="row justify-content-md-center">
-    <%= image_tag @user.image, size: "200x200" %>
-    <%= @user.name %>
-    <%= @user.age %>
-    <%= @user.gender %>
-    <%= @user.introduction %>
-
-    <% @posts.each do |post| %>
-      <%= link_to post.title, admin_post_path(post.id) %> <%#タイトルと詳細画面のパス%>
-    <% end %>
+    <div class="card">
+      <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <%= image_tag @user.image, class: "rounded-circle", size: "200x200" %>
+          </div>
+          <div class="col-md-10">
+            <div class="card-body">
+              <h5 class="card-title">名前・<%= @user.name %></h5>
+              <p class="card-text">
+                年齢・<%= @user.age %>
+                性別・<%= @user.gender %>
+              </p>
+              <p class="card-text"></br><%= @user.introduction %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <div class="col"></div>
+
+  <div class="row justify-content-md-center">
+
+    <table class="table table-hover table-inverse",border="1">
+      <thead>
+        <tr>
+          <th>投稿タイトル一覧</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @posts.each do |post| %>
+        <tr>
+          <td><%= link_to post.title, admin_post_path(post.id) %> <%#タイトルと詳細画面のパス%></td>
+        </tr>
+        <% end %>
+      </tbody>
+
+    </table>
+  </div>
+
 </div>

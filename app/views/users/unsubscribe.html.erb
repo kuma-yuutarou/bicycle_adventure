@@ -1,13 +1,37 @@
-<div class="row justify-content-md-center">
-  <h1>退会</h1>
+<div class="box12">
+  <div class="row justify-content-md-center">
+    <h1>退会</h1>
+  </div>
+<div class="col"></div>
+<div class="col"></div>
+<div class="col"></div>
+
+  <div class="container">
+    <div class="row justify-content-md-center">
+       <p>
+        退会すると、
+        これまでの投稿情報が閲覧できなくなります。</br>
+        退会する場合は、「退会する」をクリックしてください。
+        </p>
+
+    </div>
+  </div>
+
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
+
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <%= link_to user_withdrawal_path, method: :patch, "data-confirm" => "本当に退会しますか？" do %>
+        <button type="button" class="btn btn-danger">
+          退会する
+        </button>
+      <% end %>
+    </div>
+  </div>
 </div>
 
-
-<div class="container">
-  <p>
-    退会すると、
-    これまでの投稿情報が閲覧できなくなります。</br>
-    退会する場合は、「退会する」をクリックしてください。
-  </p>
-  <%= link_to "退会する", user_withdrawal_path, method: :patch, "data-confirm" => "本当に退会しますか？" %>
-</div>

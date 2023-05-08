@@ -4,16 +4,38 @@
 
 <div class="container">
   <div class="row justify-content-md-center">
-    <% @users.each do |user| %>
-      <%= link_to admin_user_path(user.id) do %>
-        <%= user.name %>
-      <% end %>
-      <%= user.email %>
-      <% if user.is_active == false %>
-        退会
-      <% else %>
-        有効
-      <% end %>
-  <% end %>
+
+    <table class="table table-hover table-inverse",border="1">
+      <thead>
+        <tr>
+          <th>ユーザー名</th>
+          <th>Email</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @users.each do |user| %>
+        <tr>
+          <%= link_to admin_user_path(user.id) do %>
+            <td>
+              <%= link_to admin_user_path(user.id) do %>
+                <%= user.name %>
+              <% end %>
+            </td>
+            <td><%= user.email %></td>
+            <td>
+              <% if user.is_active == false %>
+                退会
+              <% else %>
+                有効
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
   </div>
 </div>

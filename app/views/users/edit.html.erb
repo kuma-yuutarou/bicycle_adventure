@@ -1,32 +1,40 @@
-<div class="row justify-content-md-center">
-  <h1>マイページ編集</h1>
+<div class="box10">
+  <div class="row justify-content-md-center">
+    <h1>マイページ編集</h1>
+  </div>
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <%= form_with model: @users, url: user_path do |f| %>
+
+        <h4>名前</h4>
+        <%= f.text_field :name, class: "form-control" %>
+
+        <h4>年齢</h4>
+        <%= f.number_field :age, class: "form-control" %>
+
+        <h4>性別</h4>
+        <%= f.text_field :gender, class: "form-control" %>
+
+        <h4>自己紹介</h4>
+        <%= f.text_field :introduction, rows: "7", class: "form-control" %>
+
+        <h4>アイコン画像</h4>
+        <%= f.file_field :image, accept: "image/*", class: "form-control" %>
+
+        <h4>メールアドレス</h4>
+        <%= f.email_field :email, class: "form-control" %>
+
+        <h4>電話番号（ハイフン無し）</h4>
+        <%= f.text_field :telephone_number, class: "form-control" %>
+
+        <div class="col"></div>
+        <div class="actions">
+          <%= f.submit '保存', class: "btn btn-lg btn-primary btn-block" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
 </div>
 
-<div class="container">
-  <%= form_with model: @users, url: user_path do |f| %>
 
-    <h4>名前</h4>
-    <%= f.text_field :name %>
-
-    <h4>年齢</h4>
-    <%= f.number_field :age %>
-
-    <h4>性別</h4>
-    <%= f.text_field :gender %>
-
-    <h4>自己紹介</h4>
-    <%= f.text_field :introduction %>
-
-    <h4>アイコン画像</h4>
-    <%= f.file_field :image, accept: "image/*" %>
-
-    <h4>メールアドレス</h4>
-    <%= f.email_field :email %>
-
-    <h4>電話番号（ハイフン無し）</h4>
-    <%= f.text_field :telephone_number %>
-
-    <%= f.submit '保存' %>
-
-  <% end %>
-</div>

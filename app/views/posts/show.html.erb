@@ -90,17 +90,19 @@
         <%= comment.body %>
         <%= comment.created_at.strftime('%Y/%m/%d') %>
         <% if comment.user == current_user %>
-          <%= link_to "削除", post_comment_path(comment.id), method: :delete %>
+          <button><%= link_to "削除", post_comment_path(comment.id), method: :delete %></button>
         <% end %>
        </div>
       <% end %>
 
       <%= form_with model: [@post, @comment] do |f| %>
         <%= f.text_area :body, rows: '10', placeholder: "コメントをここに", class: "form-control" %>
+        <div class="col"></div>
         <div class="actions">
           <%= f.submit "送信する", class: "btn btn-lg btn-primary btn-block" %>
         </div>
       <% end %>
+      <div class="col"></div>
     </div>
   </div>
 

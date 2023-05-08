@@ -16,16 +16,18 @@
    <div class="card mb-3" style="max-width: 540px;">
     <div class="row g-0">
      <div class="col-md-4">
-      <%= image_tag @user.image, size: "200x200" %> <%#アイコン画像%>
+      <%= image_tag @user.image, class: "rounded-circle", size: "200x200" %> <%#アイコン画像%>
      </div>
-     <div class="col-md-8">
+     <div class="col-md-9">
       <div class="card-body">
-       <h5 class="card-title">名前・<%= @user.name %> <%#名前%></h5>
-       <p class="card-text">
-          年齢・<%= @user.age %>歳 <%#年齢%>
-          性別・<%= @user.gender %> <%#性別%>
-       </p>
-       <p class="card-text">自己紹介</br><%= @user.introduction %> <%#自己紹介文%><%#=small class="text-muted"><%/mall%></p>
+       <div class="box11">
+        <h5 class="card-title">名前・<%= @user.name %> <%#名前%></h5>
+        <p class="card-text">
+         年齢・<%= @user.age %>歳 <%#年齢%>
+         性別・<%= @user.gender %> <%#性別%>
+        </p>
+        <p class="card-text"></br><%= @user.introduction %> <%#自己紹介文%><%#=small class="text-muted"><%/mall%></p>
+       </div>
       </div>
      </div>
     </div>
@@ -64,13 +66,19 @@
    <div class="row">
     <% if current_user == @user %> <%# @user指定したユーザー currentはログインしている%>
      <div class="col">
-       <button type="button" class="btn btn-danger"><%= link_to "いいね通知", notifications_path, style: "color: black;" %></button>
+      <%= link_to notifications_path, style: "color: black;" do %>
+       <button type="button" class="btn btn-danger btn-sm" >いいね</br>通知</button>
+      <% end %>
      </div>
      <div class="col">
-       <button type="button" class="btn btn-success"><%= link_to "マイページ編集", edit_user_path, style: "color: black;" %></button>
+      <%= link_to edit_user_path do %>
+       <button type="button" class="btn btn-success btn-sm">マイページ編集</button>
+      <% end %>
      </div>
      <div class="col">
-       <button type="button" class="btn btn-warning"><%= link_to "退会", user_unsubscribe_path(current_user.id), style: "color: black;" %></button>
+      <%= link_to user_unsubscribe_path(current_user.id) do %>
+       <button type="button" class="btn btn-warning">退会</button>
+      <% end %>
      </div>
     <% end %>
    </div>

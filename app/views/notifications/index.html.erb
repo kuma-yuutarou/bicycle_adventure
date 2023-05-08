@@ -4,10 +4,28 @@
   </div>
 
   <div class="container">
-    <% @like_posts.each do |like_post| %>
-      <%= render partial: "posts/post", locals: { post: like_post } %>
-    <% end %>
+    <div class="center">
+      <table class="table table-hover table-inverse",border="1">
+        <thead>
+          <tr>
+            <th>投稿者・いいねした投稿</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @like_posts.each do |like_post| %>
+          <tr>
+            <td>
+              <%= render partial: "posts/post", locals: { post: like_post } %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
   </div>
+
 </div>
 
 

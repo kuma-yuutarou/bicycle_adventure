@@ -1,3 +1,5 @@
 .box9 {
-  ba
+  background-color: #808080;
+  background-size: cover;
+  min-height: 100vh;
 }
