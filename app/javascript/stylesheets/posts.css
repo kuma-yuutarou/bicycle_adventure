@@ -46,3 +46,10 @@
  color: #e54747;
  margin-left: 20px;
  }
+
+ .paginate {
+  border: none;
+  color: #696969;
+  background: #ffffff;
+  border-radius: 15px;
+ }

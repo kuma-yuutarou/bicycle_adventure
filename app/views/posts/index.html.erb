@@ -19,13 +19,15 @@
                 <% end %>
                 <%= submit_tag '検索' %>
             <% end %>
+
+            <div class="col"></div>
+
             <div class="row justify-content-md-center">
                 <div class="topnewbox">
                     <% @posts.each do |post| %>
                         <div class="card" style="width: 18rem;">
                             <%= link_to post_path(post.id), style: "color: black;" do %>
                                 <%= image_tag post.image, size: "250x150" %>
-                            <% end %>
                           <div class="card-body">
                             <p class="card-text">
                                 タイトル名・<%= post.title %></br>
@@ -35,6 +37,7 @@
                                 <% end %>
                                 いいね数・<%= post.likes.count %>
                             </p>
+                            <% end %>
                           </div>
                         </div>
                     <% end %>
@@ -42,8 +45,13 @@
                 </div>
 
             </div>
+
+            <div class="col"></div>
+
             <div class="row justify-content-md-center">
-                <%= paginate @posts %>
+                <div class="paginate">
+                    <%= paginate @posts %>
+                </div>
             </div>
         </div>
     </div>

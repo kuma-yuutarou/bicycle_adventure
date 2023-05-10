@@ -3,57 +3,50 @@
 <link rel="stylesheet" href="posts.css">
 
 <div class="box6">
-<div class="row justify-content-md-center">
-  <h1>新規投稿</h1>
-</div>
-
     <div class="row justify-content-md-center">
-    <%= form_with model: @post, url: posts_path do |f| %>
-        <div class="container">
-            <%= f.label "タイトル名" %>
-            <%= f.text_field :title, class: "form-control" %>
-
-            <%= f.label "写真・画像を選択" %>
-            <%= f.file_field :image, accept: "image/*", class: "form-control" %>　<%#= 写真画像を4枚まで選択させるようにしたい  %>
-
-            <%= f.label "説明を入力" %>
-            <%= f.text_area :explanation, rows: "10", class: "form-control" %>
-        </div>
+      <h1>新規投稿</h1>
     </div>
 
-    <div class="col"></div>
-
-    <div class="row justify-content-md-center">
-        <div class="container">
-            <%= f.label :地図情報入力, class: "form-label fw-bold"%>
-            <%= f.text_field :address, autofocus: true,placeholder: "住所を入力してください", class: "form-control" %>
-            <%#= f.submit (@post.new_record? ? "投稿する" : "更新する"), class: "btn btn-primary mb-4" %>
-
-            <div class="col"></div>
-
-            <div class='form-group'>
-                <%= f.label "地名タグを選択", class: 'd-block' %>
-                <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
-                <div class='form-check d-inline'>
-                    <%= tag.label class: 'form-check-label' do %>
-                        <%= tag.check_box class: 'form-check-input' %>
-                        <%= tag.text %>
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <%= form_with model: @post, url: posts_path do |f| %>
+                <div class="field">
+                    <%= f.label "タイトル名" %>
+                    <%= f.text_field :title, class: "form-control" %>
+                </div>
+                <div class="col"></div>
+                <div class="field">
+                    <%= f.label "写真・画像を選択" %>
+                    <%= f.file_field :image, accept: "image/*", class: "form-control" %>
+                </div>
+                <div class="col"></div>
+                <div class="field">
+                    <%= f.label "説明を入力" %>
+                    <%= f.text_area :explanation, rows: "10", class: "form-control" %>
+                </div>
+                <div class="col"></div>
+                <div class="field">
+                    <%= f.label :地図情報入力, class: "form-label fw-bold"%>
+                    <%= f.text_field :address, autofocus: true,placeholder: "住所を入力してください", class: "form-control" %><%#= f.submit (@post.new_record? ? "投稿する" : "更新する"), class: "btn btn-primary mb-4" %>
+                </div>
+                <div class="col"></div>
+                <div class="field">
+                    <%= f.label "地名タグを選択", class: 'd-block' %>
+                    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+                        <div class="form-check d-inline">
+                            <%= tag.label class: 'form-check-label' do %><%#= f.select :prefecture_id, Post.prefecture_ids.keys, {prompt: '選択してください'} %> <%#配列を入れる※複数形で記述 　今回はモデルでenumを定義しているカラム名を入れる　%>
+                                <%= tag.check_box class: 'form-check-input' %>
+                                <%= tag.text %>
+                            <% end %>
+                        </div>
                     <% end %>
                 </div>
-                <% end %>
-
-            </div>
-
-
-        </div>
-
-    </div>
-    <div class="row justify-content-md-center">
-        <div class="container">
-            <%= f.submit '投稿', class: "btn btn-lg btn-primary btn-block" %>
+                <div class="col"></div>
+                <div class="actions">
+                    <%= f.submit '投稿', class: "btn btn-lg btn-primary btn-block" %>
+                </div>
+                <div class="col"></div>
+            <% end %>
         </div>
     </div>
-
-    <% end %>
-    <%#= f.select :prefecture_id, Post.prefecture_ids.keys, {prompt: '選択してください'} %> <%#配列を入れる※複数形で記述 　今回はモデルでenumを定義しているカラム名を入れる　%>
 </div>
