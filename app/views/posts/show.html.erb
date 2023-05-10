@@ -5,31 +5,26 @@
 
   <div class="row justify-content-md-center">
     <div class="container">
-
       <div class="card" style="width: 15rem;"><%#= 投稿ユーザー情報%>
-        <%= link_to user_path(@post.user_id) do %><%#= 画像・名前・年齢・性別%><%#= image_tag @post.user.image, size: "200x200" %>
+        <%= link_to user_path(@post.user_id), style: "color: black;" do %><%#= 画像・名前・年齢・性別%><%#= image_tag @post.user.image, size: "200x200" %>
           <div class="card-body">
-            <h5 class="card-title">投稿者情報</h5>
+            <h5 class="card-title">投稿者情報<i class="fa-solid fa-user"></i></h5>
             <h6 class="card-subtitle mb-2 text-muted"><%= @post.user.name %></h6>
             <p class="card-text"><%= @post.user.age %>歳<%= @post.user.gender %></p>
           </div>
         <% end %>
       </div>
-
       <div class="col"></div>
-
-    <div class="box8">
-      <div class="container">
-        <div class="row justify-content-md-center">
-
-          <div class="card" style="width: 70rem;"><%#= 投稿情報%>
-            <div class="image">
-              <% if @post.image.attached? %>
-                <%= image_tag @post.image, size: "300x300" %> <%#= 写真表示%>
-              <% end %>
-            </div>
-
-            <div class="card-body">
+      <div class="box8">
+        <div class="container">
+          <div class="row justify-content-md-center">
+            <div class="card" style="width: 70rem;"><%#= 投稿情報%>
+              <div class="image">
+                <% if @post.image.attached? %>
+                  <%= image_tag @post.image, size: "300x300" %> <%#= 写真表示%>
+                <% end %>
+              </div>
+              <div class="card-body">
               <p class="card-text">
                 タイトル名・<%= @post.title %></br> <%#= タイトル名%>
                 説明・<%= @post.explanation %></br> <%#= 説明%>
@@ -52,41 +47,41 @@
                     <% end %>
                   </p>
                 <% end %>
-              </p>
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-
-<div class="col"></div>
-
+      <div class="col"></div>
       <% if current_user == @user %> <%#= 投稿したユーザーにのみ表示%>
         <button type="button" class="btn btn-danger"><%= link_to "投稿削除", post_path(@post), method: :delete, style: "color: black;" %></button>
       <% end %>
     </div>
   </div>
 
+  <div class="col"></div>
+
   <div class="container">
     <div class="row justify-content-md-center">
-      <h5>~住所~</h5></br>
+      <h5>~エリア情報~</h5></br>
       <p><%= @post.address %></p>
       <div id="map"><!-- Googleマップ表示エリア(地図を表示) --></div>
-
     </div>
   </div>
 
-<div class="col"></div>
+  <div class="col"></div>
 
   <div class="container">
     <div class="">
       <%#= コメント機能 %>
-      <p>コメント件数：<%= @post.comments.count %></p>
+      <p><i class="fa-regular fa-comment"></i>コメント件数：<%= @post.comments.count %></p>
       <% @post.comments.each do |comment| %>
        <div>
-        <%= link_to user_path(@post.id) do %>
-          <%= comment.user.name %>
+        <%= link_to user_path(@post.id), style: "color: black;" do %>
+          <%= comment.user.name %></br>
         <% end %>
+        <i class="fa-regular fa-comment"></i>
         <%= comment.body %>
         <%= comment.created_at.strftime('%Y/%m/%d') %>
         <% if comment.user == current_user %>
@@ -94,6 +89,8 @@
         <% end %>
        </div>
       <% end %>
+
+      <div class="col"></div>
 
       <%= form_with model: [@post, @comment] do |f| %>
         <%= f.text_area :body, rows: '10', placeholder: "コメントをここに", class: "form-control" %>

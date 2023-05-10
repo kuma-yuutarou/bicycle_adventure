@@ -8,22 +8,22 @@
 
         <h4>名前</h4>
         <%= f.text_field :name, class: "form-control" %>
-
+        <div class="col"></div>
         <h4>年齢</h4>
         <%= f.number_field :age, class: "form-control" %>
-
+        <div class="col"></div>
         <h4>性別</h4>
         <%= f.text_field :gender, class: "form-control" %>
-
+        <div class="col"></div>
         <h4>自己紹介</h4>
         <%= f.text_field :introduction, rows: "7", class: "form-control" %>
-
+        <div class="col"></div>
         <h4>アイコン画像</h4>
         <%= f.file_field :image, accept: "image/*", class: "form-control" %>
-
+        <div class="col"></div>
         <h4>メールアドレス</h4>
         <%= f.email_field :email, class: "form-control" %>
-
+        <div class="col"></div>
         <h4>電話番号（ハイフン無し）</h4>
         <%= f.text_field :telephone_number, class: "form-control" %>
 
@@ -31,6 +31,8 @@
         <div class="actions">
           <%= f.submit '保存', class: "btn btn-lg btn-primary btn-block" %>
         </div>
+        <div class="col"></div>
+        
       <% end %>
     </div>
   </div>
