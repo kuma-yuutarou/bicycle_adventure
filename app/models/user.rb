@@ -11,13 +11,13 @@ class User < ApplicationRecord
     user=find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
       user.password_confirmation = user.password
-      user.name = "ゲストユーザーでーす"
+      user.name = "ゲストユーザー"
       user.age = "22歳"
-      user.gender = "男性でーす"
+      user.gender = "男性"
       user.introduction ="自己紹介ですよ"
       user.telephone_number ="０９０１２３４５６７８"
     end
-    file_path = Rails.root.join('app/assets/images/no_image.jpg')
+    file_path = Rails.root.join('app/assets/images/bicycle.jpg')
     user.image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     user
   end
