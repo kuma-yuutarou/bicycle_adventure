@@ -1,5 +1,5 @@
 .box3 {
-  background-image: url(../sky/sky.jpg);
+  background-image: url("../sky/sky.jpg");
   background-size: cover;
   min-height: 100vh;
 }

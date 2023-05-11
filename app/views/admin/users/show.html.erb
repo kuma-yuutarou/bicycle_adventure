@@ -10,7 +10,7 @@
           <div class="col-md-4">
             <%= image_tag @user.image, class: "rounded-circle", size: "200x200" %>
           </div>
-          <div class="col-md-10">
+          <div class="col-md-9">
             <div class="card-body">
               <h5 class="card-title">名前・<%= @user.name %></h5>
               <p class="card-text">
@@ -45,6 +45,21 @@
       </tbody>
 
     </table>
+
+    <div class="col"></div>
+
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="row">
+          <%= link_to admin_user_unsubscribe_path(@user.id) do %>
+            <button type="button" class="btn btn-warning">退会</button>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col"></div>
+
   </div>
 
 </div>

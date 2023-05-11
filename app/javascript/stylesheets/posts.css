@@ -1,5 +1,5 @@
 .back {
-  background-image: url(../noogata/noogataDJ.jpg);
+  background-image: url("../noogata/noogataDJ.jpg");
   background-size: cover;
   min-height: 100vh;
 }

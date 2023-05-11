@@ -1,0 +1,33 @@
+  <div class="row justify-content-md-center">
+    <h1>退会</h1>
+  </div>
+<div class="col"></div>
+<div class="col"></div>
+<div class="col"></div>
+
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <p>
+        退会すると、
+        これまでの投稿情報が閲覧できなくなります。</br>
+        退会する場合は、「退会させる」をクリックしてください。
+      </p>
+    </div>
+  </div>
+
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
+
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <%#= link_to admin_user_withdrawal_path(user.id), method: :patch, "data-confirm" => "本当に退会させますか？" do %>
+        <button type="button" class="btn btn-danger">
+          退会させる
+        </button>
+      <%# end %>
+    </div>
+  </div>

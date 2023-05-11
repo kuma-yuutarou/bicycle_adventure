@@ -8,9 +8,9 @@
       <div class="card" style="width: 15rem;"><%#= 投稿ユーザー情報%>
         <%= link_to user_path(@post.user_id), style: "color: black;" do %><%#= 画像・名前・年齢・性別%><%#= image_tag @post.user.image, size: "200x200" %>
           <div class="card-body">
-            <h5 class="card-title">投稿者情報<i class="fa-solid fa-user"></i></h5>
+            <h5 class="card-title">投稿者情報 <i class="fa-solid fa-user"></i></h5>
             <h6 class="card-subtitle mb-2 text-muted"><%= @post.user.name %></h6>
-            <p class="card-text"><%= @post.user.age %>歳<%= @post.user.gender %></p>
+            <p class="card-subtitle mb-2 text-muted"><%= @post.user.age %>歳<%= @post.user.gender %></p>
           </div>
         <% end %>
       </div>

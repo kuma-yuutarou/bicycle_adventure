@@ -1,5 +1,5 @@
 .box5 {
-  background-image: url(../gears/gears1920.jpg);
+  background-image: url("../gears/gears1920.jpg");
   background-size: cover;
   min-height: 100vh;
 }
@@ -10,9 +10,9 @@
   min-height: 100vh;
 }
 
-.box11 {
-  text-align: right;
-}
+/*.box11 {*/
+/*  text-align: right;*/
+/*}*/
 
 .box12 {
   background-color: #808080;

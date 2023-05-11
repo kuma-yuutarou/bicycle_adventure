@@ -5,7 +5,6 @@
   <div class="container">
     <div class="row justify-content-md-center">
       <%= form_with model: @users, url: user_path do |f| %>
-
         <h4>名前</h4>
         <%= f.text_field :name, class: "form-control" %>
         <div class="col"></div>
@@ -26,13 +25,11 @@
         <div class="col"></div>
         <h4>電話番号（ハイフン無し）</h4>
         <%= f.text_field :telephone_number, class: "form-control" %>
-
         <div class="col"></div>
         <div class="actions">
           <%= f.submit '保存', class: "btn btn-lg btn-primary btn-block" %>
         </div>
         <div class="col"></div>
-        
       <% end %>
     </div>
   </div>

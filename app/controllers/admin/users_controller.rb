@@ -11,6 +11,15 @@ class Admin::UsersController < ApplicationController
   def edit
   end
 
+  def withdrawal
+    # if @user.update(is_active: false)
+    #   reset_session
+    #   redirect_to admin_users_path
+    # else
+    #   render :unsubscribe
+    # end
+  end
+
   def update
   end
 

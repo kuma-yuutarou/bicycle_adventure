@@ -28,7 +28,10 @@ Rails.application.routes.draw do
   #get 'comments/destroy'
 
   namespace :admin do
-    resources :users,except: [:new, :create, :destroy] #except除外する書き方
+    resources :users,except: [:new, :create, :destroy] do#except除外する書き方
+      get 'unsubscribe'
+      patch 'withdrawal'
+    end
     #get 'users/index'
     #get 'users/show'
     #get 'users/edit'

@@ -13,11 +13,9 @@
           <th>ステータス</th>
         </tr>
       </thead>
-
       <tbody>
         <% @users.each do |user| %>
-        <tr>
-          <%= link_to admin_user_path(user.id) do %>
+          <tr>
             <td>
               <%= link_to admin_user_path(user.id) do %>
                 <%= user.name %>
@@ -31,8 +29,7 @@
                 有効
               <% end %>
             </td>
-          <% end %>
-        </tr>
+          </tr>
         <% end %>
       </tbody>
     </table>

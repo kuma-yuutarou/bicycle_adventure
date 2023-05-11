@@ -13,7 +13,7 @@
                 <%= form.submit "検索" %>
             <% end %>
 
-            タグ検索<%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
+            <%= form_tag({controller:"posts",action:"index"}, method: :get) do %>タグ検索
                 <% Tag.all.each do |t| %>
                     <span class="pb-2"><%= check_box :tag_ids, t.name %><%= t.name %></span>
                 <% end %>
@@ -28,17 +28,17 @@
                         <div class="card" style="width: 18rem;">
                             <%= link_to post_path(post.id), style: "color: black;" do %>
                                 <%= image_tag post.image, size: "250x150" %>
-                          <div class="card-body">
-                            <p class="card-text">
-                                タイトル名・<%= post.title %></br>
-                                投稿者名・<%= post.user.name %></br>
-                                <% post.tags.each do |tag| %>
-                                    地名タグ・<span><label for="tag_ids_<%= tag.name %>"><%= tag.name %></label></span></br>
-                                <% end %>
-                                いいね数・<%= post.likes.count %>
-                            </p>
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        タイトル名・<%= post.title %></br>
+                                        投稿者名・<%= post.user.name %></br>
+                                        <% post.tags.each do |tag| %>
+                                            地名タグ・<span><label for="tag_ids_<%= tag.name %>"><%= tag.name %></label></span></br>
+                                        <% end %>
+                                        いいね数・<%= post.likes.count %>
+                                    </p>
+                                </div>
                             <% end %>
-                          </div>
                         </div>
                     <% end %>
 

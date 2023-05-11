@@ -1,15 +1,51 @@
-<div class="row justify-content-md-center">
-  <h2>検索結果 "<%= @keyword %>"</h2>
+
+<div class="back">
+  <div class="row justify-content-md-center">
+    <h1>検索結果 "<%= @keyword %>"</h1>
+  </div>
+
+  <div class="container">
+    <%= form_with url: search_posts_path, local: true, method: :get do |form| %><%#=キーワード検索%>
+      <%= form.text_field :keyword %>
+      <%= form.submit "検索" %>
+    <% end %>
+
+    <%= form_tag({controller:"posts",action:"index"}, method: :get) do %>タグ検索
+      <% Tag.all.each do |t| %>
+        <span class="pb-2"><%= check_box :tag_ids, t.name %><%= t.name %></span>
+      <% end %>
+      <%= submit_tag '検索' %>
+    <% end %>
+
+    <div class="col"></div>
+
+    <div class="row justify-content-md-center">
+      <div class="topnewbox">
+        <% @posts.each do |post| %>
+          <div class="card" style="width: 18rem;">
+            <%= link_to post_path(post.id), style: "color: black;" do %>
+              <%= image_tag post.image, size: "250x150" %>
+              <div class="card-body">
+                <p class="card-text">
+                  タイトル名・<%= post.title %></br>
+                  投稿者名・<%= post.user.name %></br>
+                  <% post.tags.each do |tag| %>
+                    地名タグ・<span><label for="tag_ids_<%= tag.name %>"><%= tag.name %></label></span></br>
+                  <% end %>
+                  いいね数・<%= post.likes.count %>
+                </p>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="paginate">
+        <%#= paginate @posts %>
+      </div>
+    </div>
+
+  </div>
 </div>
 
-<div class="container">
-  <% @posts.each do |post| %>
-    <%= link_to post_path(post.id) do %>
-      <%= post.title %>
-      <%= post.user.name %>
-      <%= post.prefecture_id %>
-      <%= post.likes.count %>
-      <%= image_tag post.image, size: "200x200" %>
-    <% end %>
-  <% end %>
-</div>
+
