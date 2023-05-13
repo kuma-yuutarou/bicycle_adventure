@@ -22,6 +22,10 @@ class User < ApplicationRecord
     user
   end
 
+  def active_for_authentication?
+    super && (self.is_active == true)
+  end
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 end

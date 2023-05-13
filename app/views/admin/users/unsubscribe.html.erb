@@ -24,10 +24,10 @@
 
   <div class="container">
     <div class="row justify-content-md-center">
-      <%#= link_to admin_user_withdrawal_path(user.id), method: :patch, "data-confirm" => "本当に退会させますか？" do %>
+      <%= link_to admin_user_withdrawal_path, method: :patch, "data-confirm" => "本当に退会させますか？" do %>
         <button type="button" class="btn btn-danger">
           退会させる
         </button>
-      <%# end %>
+      <% end %>
     </div>
   </div>

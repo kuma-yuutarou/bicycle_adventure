@@ -12,12 +12,13 @@ class Admin::UsersController < ApplicationController
   end
 
   def withdrawal
-    # if @user.update(is_active: false)
-    #   reset_session
-    #   redirect_to admin_users_path
-    # else
-    #   render :unsubscribe
-    # end
+    @user = User.find(params[:user_id])
+    if @user.update(is_active: false)
+      #reset_session 今ログインしている人がログアウト
+      redirect_to admin_users_path
+    else
+      render :unsubscribe
+    end
   end
 
   def update
