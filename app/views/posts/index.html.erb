@@ -15,7 +15,7 @@
 
             <%= form_tag({controller:"posts",action:"index"}, method: :get) do %>タグ検索
                 <% Tag.all.each do |t| %>
-                    <span class="pb-2"><%= check_box :tag_ids, t.name %><%= t.name %></span>
+                    <span class="pb-2"><%= check_box :tag_ids, t.name %><%= t.name %><%#= form.check_box :tag_ids, t.name { multiple: true, include_hidden: false }, tag_ids %></span>
                 <% end %>
                 <%= submit_tag '検索' %>
             <% end %>

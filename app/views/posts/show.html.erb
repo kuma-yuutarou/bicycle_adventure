@@ -105,7 +105,7 @@
 
 </div>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuRsdadlZWuqaG1_7G9qwjLB5fimOn5Ag&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script><%#= <%= ENV['GOOGLE_MAP_API_KEY'] %>
 
 <!-- Googleマップ表示用の Javascript -->
 <script>
