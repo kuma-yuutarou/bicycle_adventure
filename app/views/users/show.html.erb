@@ -64,7 +64,7 @@
 <div class="container">
   <div class="row justify-content-md-center">
    <div class="row">
-    <% if current_user.email != 'guest@example.com' %><%# @user指定したユーザー currentはログインしている%>
+    <% if current_user.email != 'guest@example.com' && current_user == @user %><%# @user指定したユーザー currentはログインしている 「&&」でなおかつ%>
      <div class="col">
       <%= link_to notifications_path, style: "color: black;" do %>
        <button type="button" class="btn btn-danger btn-sm" >いいね</br>通知</button>

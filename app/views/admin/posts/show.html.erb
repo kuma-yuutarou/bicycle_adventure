@@ -55,7 +55,7 @@
     <p><i class="fa-regular fa-comment"></i>コメント件数：<%= @post.comments.count %></p>
     <% @post.comments.each do |comment| %>
     <div>
-      <%= link_to user_path(@post.id) do %>
+      <%= link_to admin_user_path(comment.user_id) do %>
         <%= comment.user.name %>
       <% end %>
       <i class="fa-regular fa-comment"></i>
@@ -70,7 +70,7 @@
 
 
 
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuRsdadlZWuqaG1_7G9qwjLB5fimOn5Ag&callback=initMap" async defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script><%#= <%= ENV['GOOGLE_MAP_API_KEY'] %>
 
   <!-- Googleマップ表示用の Javascript -->
   <script>

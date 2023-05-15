@@ -78,7 +78,7 @@
       <p><i class="fa-regular fa-comment"></i>コメント件数：<%= @post.comments.count %></p>
       <% @post.comments.each do |comment| %>
        <div>
-        <%= link_to user_path(@post.id), style: "color: black;" do %>
+        <%= link_to user_path(comment.user_id), style: "color: black;" do %>
           <%= comment.user.name %></br>
         <% end %>
         <i class="fa-regular fa-comment"></i>
