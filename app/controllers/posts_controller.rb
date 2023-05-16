@@ -2,7 +2,12 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index] #exceptが除く
 
   def index
-    @posts = Post.all.page(params[:page]).per(3)
+    if params[:tag_ids]
+      tags = params[:tag_ids].select {|k, v| v == "1" }.keys
+      @posts = Kaminari.paginate_array(Tag.where(name: tags).map {|tag| tag.posts}.flatten).page(params[:page]).per(3)
+    else
+      @posts = Post.all.page(params[:page]).per(3)
+    end
   end
 
   def show
