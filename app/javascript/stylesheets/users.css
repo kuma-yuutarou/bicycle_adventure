@@ -24,3 +24,30 @@ table {
   text-align:center;
 }
 
+@media screen and (max-width:425px) {
+  .box5 {
+  /*background-image: url("../gears/gears1920.jpg");*/
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.box10 {
+  background-color: #3CB371;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+/*.box11 {*/
+/*  text-align: right;*/
+/*}*/
+
+.box12 {
+  background-color: #808080;
+  min-height: 100vh;
+}
+
+table {
+  background-color: #ffffff;
+  text-align:center;
+}
+}

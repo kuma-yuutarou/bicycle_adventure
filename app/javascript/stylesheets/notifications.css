@@ -3,3 +3,11 @@
   background-size: cover;
   min-height: 100vh;
 }
+
+@media screen and (max-width:425px) {
+  .box9 {
+  background-color: #808080;
+  background-size: cover;
+  min-height: 100vh;
+}
+}

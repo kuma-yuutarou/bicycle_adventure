@@ -38,3 +38,32 @@
   width: 100%;
   height: 320px;
 }
+
+@media screen and (max-width:425px) {
+  header {
+  background-color: #008080;
+  border-bottom: solid 3px black;
+  }
+
+  .col {
+  padding-bottom: 20px;
+  }
+
+  .title1 {
+  text-align:center;
+  font-size: 75px;
+  font-family:cursive;
+  display: block;
+  text-decoration-line: none;
+  }
+
+  .top {
+  text-decoration: none !important;
+}
+
+  #map{
+  width: 100%;
+  height: 320px;
+}
+
+  }

@@ -53,3 +53,61 @@
   background: #ffffff;
   border-radius: 15px;
  }
+
+ @media screen and (max-width:425px) {
+  .back {
+  /*background-image: url("../noogata/noogataDJ.jpg");*/
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.topnewbox{
+  display: inline-flex;
+  margin: 5px;
+  padding: 10px;
+  background-color: #ffffff;
+}
+
+.box6 {
+  background-color: #3CB371;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.box7 {
+  background-color: #FFA500;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.box8 {
+  text-align:center;
+}
+
+.image {
+  text-align:center;
+}
+
+.like-btn {
+ width: 25px;
+ height: 30px;
+ font-size: 25px;
+ color: #808080;
+ margin-left: 20px;
+ }
+
+.unlike-btn {
+ width: 25px;
+ height: 30px;
+ font-size: 25px;
+ color: #e54747;
+ margin-left: 20px;
+ }
+
+ .paginate {
+  border: none;
+  color: #696969;
+  background: #ffffff;
+  border-radius: 15px;
+ }
+ }

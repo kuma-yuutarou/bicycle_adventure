@@ -11,3 +11,19 @@
 .box2 {
   font-size: 30px;
 }
+
+@media screen and (max-width:425px) {
+  .box {
+  /*background-image: url("../sky/sky.jpg");*/
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.box1 {
+  height: 70px;
+}
+
+.box2 {
+  font-size: 30px;
+}
+}
