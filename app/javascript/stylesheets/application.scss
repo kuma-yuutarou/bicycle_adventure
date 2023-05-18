@@ -5,3 +5,62 @@
 // @import '@fortawesome/fontawesome-free/scss/regular';
 // @import '@fortawesome/fontawesome-free/scss/brands';
 // @import '@fortawesome/fontawesome-free/scss/v4-shims';
+ header {
+   background-color: #008080;
+   border-bottom: solid 3px black;
+ }
+
+ .col {
+  padding-bottom: 20px;
+ }
+
+.title1 {
+  text-align:center;
+  font-size: 75px;
+  font-family:cursive;
+  display: block;
+  text-decoration-line: none;
+}
+
+.top {
+  text-decoration: none !important;
+}
+
+
+#map{
+  width: 100%;
+  height: 320px;
+}
+
+@media screen and (max-width:425px) {
+  header {
+  background-color: #008080;
+  border-bottom: solid 3px black;
+  }
+
+  .col {
+  padding-bottom: 20px;
+  }
+
+  .title1 {
+  text-align:center;
+  font-family:cursive;
+  display: block;
+  text-decoration-line: none;
+  }
+
+  .top {
+    font-size: 25px;
+    color: red;
+
+  }
+
+  .top {
+  text-decoration: none !important;
+}
+
+  #map{
+  width: 100%;
+  height: 320px;
+}
+}
