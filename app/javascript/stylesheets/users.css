@@ -19,6 +19,10 @@
   min-height: 100vh;
 }
 
+.box13 {
+  background-color: #ffffff;
+}
+
 table {
   background-color: #ffffff;
   text-align:center;
@@ -44,6 +48,10 @@ table {
 .box12 {
   background-color: #808080;
   min-height: 100vh;
+}
+
+.box13 {
+  background-color: #ffffff;
 }
 
 table {
