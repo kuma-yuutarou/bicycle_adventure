@@ -47,12 +47,12 @@
  margin-left: 20px;
  }
 
- .paginate {
-  border: none;
-  color: #696969;
-  background: #ffffff;
-  border-radius: 15px;
- }
+ /*.paginate {*/
+ /* border: none;*/
+ /* color: #696969;*/
+ /* background: #ffffff;*/
+ /* border-radius: 15px;*/
+ /*}*/
 
  @media screen and (max-width:425px) {
   .back {
@@ -104,10 +104,6 @@
  margin-left: 20px;
  }
 
- .paginate {
-  border: none;
-  color: #696969;
-  background: #ffffff;
-  border-radius: 15px;
- }
+
+
  }
