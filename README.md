@@ -43,7 +43,7 @@ https://docs.google.com/spreadsheets/d/1e5bXDukRrXf9JM2El9FNV9zH_9YqBOPrv17F-QUM
 - IDE：Cloud9
 
 ## 使用素材
-・ぱくたそ　https://www.pakutaso.com/
+・ぱくたそ　https://www.pakutaso.com/</br>
 ・O-DAN　https://o-dan.net/ja/
 
 
